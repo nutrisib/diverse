@@ -16,15 +16,18 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: auto; /* Permite scroll orizontal dacă conținutul este prea lat */
         }
         .infographic-container {
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             padding: 35px;
-            max-width: 900px; /* Lățime mai mare pentru comparație */
+            max-width: 1200px; /* Lățime mare pentru a simula landscape */
+            width: 100%; /* Ocupă toată lățimea disponibilă */
             text-align: center;
             border-top: 8px solid #0056b3; /* Culoare de accent */
+            box-sizing: border-box; /* Include padding și border în lățime */
         }
         h1 {
             color: #0056b3;
@@ -36,7 +39,7 @@
         }
         h1::after {
             content: '';
-            width: 120px; /* Linie mai lungă */
+            width: 120px;
             height: 4px;
             background-color: #00c000;
             position: absolute;
@@ -45,17 +48,16 @@
             bottom: 0;
             border-radius: 2px;
         }
-        h2 {
-            color: #00c000;
-            font-size: 1.8em;
-            margin-top: 35px;
-            margin-bottom: 15px;
+        .intro-text {
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 35px;
             text-align: center;
         }
-        .product-section {
-            display: flex;
-            flex-direction: column; /* Asigură un flux vertical, eliminând coloanele */
-            gap: 30px; /* Spațiu între secțiunile de produs */
+        .product-comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Două coloane egale */
+            gap: 30px; /* Spațiu între coloane */
             margin-top: 30px;
         }
         .product-card {
@@ -76,6 +78,13 @@
             margin-bottom: 15px;
             text-align: center;
         }
+        .price-info {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 15px;
+            text-align: center;
+        }
         .product-card h4 {
             color: #00c000;
             font-size: 1.3em;
@@ -94,18 +103,33 @@
             padding: 12px 18px;
             margin-bottom: 8px;
             border-radius: 8px;
+            display: block; /* Asigură că textul curge normal, nu pe linii orizontale forțate */
         }
         .product-card p {
             text-align: justify;
             margin-top: 10px;
             margin-bottom: 15px;
         }
-        .price-info {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #d9534f; /* O culoare pentru preț */
-            margin-top: 15px;
+        .conclusion-section {
+            margin-top: 40px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            background-color: #fcfdff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .conclusion-section h2 {
+            color: #0056b3;
+            font-size: 2em;
+            margin-bottom: 25px;
             text-align: center;
+        }
+        .conclusion-section p {
+            text-align: justify;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #444;
         }
         .footer-note {
             font-size: 0.95em;
@@ -121,139 +145,127 @@
             color: #888;
             text-align: center;
         }
-        .conclusion-section {
-            margin-top: 40px;
-            text-align: left;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 25px;
-            background-color: #fcfdff;
-        }
-        .conclusion-section p {
-            text-align: justify;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
     <div class="infographic-container">
         <h1>Analiză Comparativă: Suplimente cu Omega-3</h1>
-        <p style="font-size: 1.2em; color: #444; margin-bottom: 35px; text-align: center;">
+        <p class="intro-text">
             O privire detaliată asupra Herbalifeline Max Omega-3 și Coral Club O!Мega-3 TG Omega-3.
         </p>
 
-        <div class="product-section">
+        <div class="product-comparison-grid">
             <div class="product-card">
                 <h3>Herbalifeline Max Omega-3</h3>
                 <p class="price-info">
-                    [cite_start]<strong>Preț estimat:</strong> 30 capsule: 176 lei [cite: 2]
+                    Distribuitor: Herbalife | 30 capsule: 176 lei
                 </p>
                 
                 <h4>Ingrediente de Bază</h4>
                 <ul>
-                    [cite_start]<li>Conține acizi grași esențiali EPA (acid eicosapentaenoic) și DHA (acid docosahexaenoic) [cite: 2][cite_start], proveniți din uleiuri de pește obținute din surse sustenabile (acreditate de Friend of the Sea)[cite: 2]. Aceasta este o practică bună din punct de vedere etic și de mediu.</li>
+                    <li>Conține acizi grași esențiali EPA (acid eicosapentaenoic) și DHA (acid docosahexaenoic), proveniți din uleiuri de pește obținute din surse sustenabile (acreditate de Friend of the Sea). Aceasta este o practică bună din punct de vedere etic și de mediu.</li>
                 </ul>
 
                 <h4>Forma de Omega-3</h4>
                 <p>
-                    [cite_start]Informațiile publice nu specifică explicit dacă este sub formă de trigliceride (TG) sau esteri etilici (EE)[cite: 2]. Majoritatea suplimentelor de pe piață sunt fie EE, fie TG. [cite_start]Forma de trigliceride re-esterificate (rTG) este considerată a avea o biodisponibilitate superioară, dar absența unei mențiuni explicite sugerează că ar putea fi o formă comună (cum ar fi EE), care necesită procesul digestiv complet pentru absorbție[cite: 2].
+                    Informațiile publice nu specifică explicit dacă este sub formă de trigliceride (TG) sau esteri etilici (EE). Majoritatea suplimentelor de pe piață sunt fie EE, fie TG. Forma de trigliceride re-esterificate (rTG) este considerată a avea o biodisponibilitate superioară, dar absența unei mențiuni explicite sugerează că ar putea fi o formă comună (cum ar fi EE), care necesită procesul digestiv complet pentru absorbție.
                 </p>
 
                 <h4>Alte Ingrediente și Caracteristici</h4>
                 <ul>
-                    [cite_start]<li>Produsul conține uleiuri esențiale de cimbru și mentă pentru a reduce "gustul de pește" sau eructațiile, o problemă comună la suplimentele cu ulei de pește[cite: 2].</li>
-                    [cite_start]<li>Utilizează o capsulă de gel vegetariană[cite: 2]. [cite_start]Acestea sunt caracteristici legate de palatabilitate și preferințe dietetice, nu direct de biodisponibilitatea compușilor principali[cite: 2].</li>
+                    <li>Produsul conține uleiuri esențiale de cimbru și mentă pentru a reduce "gustul de pește" sau eructațiile, o problemă comună la suplimentele cu ulei de pește.</li>
+                    <li>Utilizează o capsulă de gel vegetariană. Acestea sunt caracteristici legate de palatabilitate și preferințe dietetice, nu direct de biodisponibilitatea compușilor principali.</li>
                 </ul>
 
                 <h4>Recomandări de Utilizare</h4>
                 <ul>
-                    [cite_start]<li>Se recomandă administrarea cu apă și, de preferință, cu mesele ("use preferably with meals spaced over the day")[cite: 2].</li>
-                    [cite_start]<li>Această instrucțiune este standard pentru orice supliment liposolubil (cum ar fi Omega-3), deoarece prezența grăsimilor în masă stimulează secreția de bilă, esențială pentru emulsionarea și absorbția Omega-3[cite: 2]. Aceasta arată că produsul se bazează pe mecanismele naturale de absorbție a grăsimilor.</li>
+                    <li>Se recomandă administrarea cu apă și, de preferință, cu mesele ("use preferably with meals spaced over the day").</li>
+                    <li>Această instrucțiune este standard pentru orice supliment liposolubil (cum ar fi Omega-3), deoarece prezența grăsimilor în masă stimulează secreția de bilă, esențială pentru emulsionarea și absorbția Omega-3. Aceasta arată că produsul se bazează pe mecanismele naturale de absorbție a grăsimilor.</li>
                 </ul>
 
                 <h4>Afirmații de Marketing</h4>
                 <ul>
-                    [cite_start]<li>Se subliniază beneficiile cunoscute ale EPA și DHA pentru funcția cardiacă, cerebrală, vedere, trigliceride și tensiune arterială[cite: 2]. Acestea sunt afirmații de sănătate general valabile pentru Omega-3, nu neapărat specifice produsului Herbalife.</li>
+                    <li>Se subliniază beneficiile cunoscute ale EPA și DHA pentru funcția cardiacă, cerebrală, vedere, trigliceride și tensiune arterială. Acestea sunt afirmații de sănătate general valabile pentru Omega-3, nu neapărat specifice produsului Herbalife.</li>
                 </ul>
 
                 <h4>Analiză privind Biodisponibilitatea</h4>
                 <p>
-                    [cite_start]Din informațiile publice, nu există mențiuni clare despre utilizarea unor tehnologii avansate de îmbunătățire a biodisponibilității, cum ar fi micelizarea, nano-emulsionarea sau tehnologia lipozomală, similar cu ce se declară pentru conceptul NTC al PM-International[cite: 2].
+                    Din informațiile publice, nu există mențiuni clare despre utilizarea unor tehnologii avansate de îmbunătățire a biodisponibilității, cum ar fi micelizarea, nano-emulsionarea sau tehnologia lipozomală, similar cu ce se declară pentru conceptul NTC al PM-International.
                 </p>
                 <p>
-                    [cite_start]Herbalife nu pare să promoveze Herbalifeline Max pe baza unui "concept de transport al nutrienților" specific sau a unor brevete legate de absorbție superioară[cite: 2]. Mai degrabă, se axează pe:
+                    Herbalife nu pare să promoveze Herbalifeline Max pe baza unui "concept de transport al nutrienților" specific sau a unor brevete legate de absorbție superioară. Mai degrabă, se axează pe:
                 </p>
                 <ul>
-                    [cite_start]<li>Calitatea sursei de pește (sustenabilitate)[cite: 2].</li>
-                    [cite_start]<li>Cantitățile de EPA și DHA per capsulă[cite: 2].</li>
-                    [cite_start]<li>Eliminarea gustului de pește (prin uleiuri esențiale)[cite: 2].</li>
-                    [cite_start]<li>Capsula vegetariană[cite: 2].</li>
+                    <li>Calitatea sursei de pește (sustenabilitate).</li>
+                    <li>Cantitățile de EPA și DHA per capsulă.</li>
+                    <li>Eliminarea gustului de pește (prin uleiuri esențiale).</li>
+                    <li>Capsula vegetariană.</li>
                 </ul>
                 <p>
-                    [cite_start]Aceste caracteristici sunt importante pentru un supliment de calitate, dar ele îl încadrează mai degrabă într-o categorie de suplimente Omega-3 de bună calitate, comune, decât într-una cu o tehnologie de absorbție fundamental diferită sau superior demonstrată științific față de formulările standard[cite: 2].
+                    Aceste caracteristici sunt importante pentru un supliment de calitate, dar ele îl încadrează mai degrabă într-o categorie de suplimente Omega-3 de bună calitate, comune, decât într-una cu o tehnologie de absorbție fundamental diferită sau superior demonstrată științific față de formulările standard.
                 </p>
             </div>
 
             <div class="product-card">
                 <h3>Coral Club O!Мega-3 TG Omega-3</h3>
                 <p class="price-info">
-                    [cite_start]<strong>Preț estimat:</strong> 30 capsule: 68 lei [cite: 2][cite_start], 90 capsule: 169 lei [cite: 2]
+                    Distribuitor: Coral Club | 30 capsule: 68 lei, 90 capsule: 169 lei
                 </p>
 
                 <h4>Forma de Omega-3</h4>
                 <p>
-                    [cite_start]Un aspect important și pozitiv este că acest supliment conține acizi grași esențiali Omega-3 în **formă de trigliceride re-esterificate (rTG)**[cite: 2]. [cite_start]Această formă este specific menționată ca fiind "apropiată de forma naturală" și "asimilită ușor și rapid de către organism"[cite: 2]. [cite_start]Din punct de vedere științific, **forma rTG este, într-adevăr, considerată a avea o biodisponibilitate superioară** comparativ cu forma de ester etilic (EE), deoarece este mai bine recunoscută și procesată de enzimele digestive ale corpului[cite: 2].
+                    Un aspect important și pozitiv este că acest supliment conține acizi grași esențiali Omega-3 în **formă de trigliceride re-esterificate (rTG)**. Această formă este specific menționată ca fiind "apropiată de forma naturală" și "asimilită ușor și rapid de către organism". Din punct de vedere științific, **forma rTG este, într-adevăr, considerată a avea o biodisponibilitate superioară** comparativ cu forma de ester etilic (EE), deoarece este mai bine recunoscută și procesată de enzimele digestive ale corpului.
                 </p>
 
                 <h4>Concentrație</h4>
                 <ul>
-                    [cite_start]<li>Produsul menționează o concentrație de 65% a acizilor grași polinesaturați Omega-3, cu 360 mg EPA și 240 mg DHA per capsulă (dacă vorbim de 1 capsulă din cele 3/zi recomandate)[cite: 2].</li>
+                    <li>Produsul menționează o concentrație de 65% a acizilor grași polinesaturați Omega-3, cu 360 mg EPA și 240 mg DHA per capsulă (dacă vorbim de 1 capsulă din cele 3/zi recomandate).</li>
                 </ul>
 
                 <h4>Sursa și Puritatea</h4>
                 <ul>
-                    [cite_start]<li>Uleiul de pește este obținut din hamsii, sardine, scrumbii și ton din captură liberă[cite: 2].</li>
-                    <li>Se menționează utilizarea tehnologiei "Flutex" pentru purificarea uleiului de pește, descrisă ca fiind ecologică și fără solvenți organici toxici sau temperaturi ridicate. [cite_start]Aceasta este o afirmație bună privind calitatea și puritatea[cite: 2].</li>
+                    <li>Uleiul de pește este obținut din hamsii, sardine, scrumbii și ton din captură liberă.</li>
+                    <li>Se menționează utilizarea tehnologiei "Flutex" pentru purificarea uleiului de pește, descrisă ca fiind ecologică și fără solvenți organici toxici sau temperaturi ridicate. Aceasta este o afirmație bună privind calitatea și puritatea.</li>
                 </ul>
 
                 <h4>Alte Ingrediente</h4>
                 <ul>
-                    [cite_start]<li>Produsul conține și Vitamina E (D-alfa-tocoferol), un antioxidant natural care ajută la protejarea uleiului de pește de oxidare[cite: 2].</li>
+                    <li>Produsul conține și Vitamina E (D-alfa-tocoferol), un antioxidant natural care ajută la protejarea uleiului de pește de oxidare.</li>
                 </ul>
 
                 <h4>Recomandări de Utilizare</h4>
                 <ul>
-                    [cite_start]<li>Se recomandă administrarea de 1 capsulă de 3 ori pe zi, cu mesele[cite: 2]. [cite_start]Ca și la alte suplimente liposolubile, administrarea cu alimente care conțin grăsimi stimulează secreția de bilă, optimizând absorbția[cite: 2].</li>
+                    <li>Se recomandă administrarea de 1 capsulă de 3 ori pe zi, cu mesele. Ca și la alte suplimente liposolubile, administrarea cu alimente care conțin grăsimi stimulează secreția de bilă, optimizând absorbția.</li>
                 </ul>
 
                 <h4>Analiză privind Biodisponibilitatea</h4>
                 <p>
-                    [cite_start]**Da, într-o oarecare măsură, prin alegerea formei de trigliceride re-esterificate (rTG).** [cite: 2]
+                    **Da, într-o oarecare măsură, prin alegerea formei de trigliceride re-esterificate (rTG).**
                 </p>
                 <p>
-                    Faptul că folosesc **forma rTG** este un element important și **științific validat** pentru îmbunătățirea biodisponibilității. Multe studii au arătat că rTG este absorbit mai eficient decât esterii etilici. [cite_start]Aceasta este o abordare bazată pe știință în alegerea materiei prime[cite: 2].
+                    Faptul că folosesc **forma rTG** este un element important și **științific validat** pentru îmbunătățirea biodisponibilității. Multe studii au arătat că rTG este absorbit mai eficient decât esterii etilici. Aceasta este o abordare bazată pe știință în alegerea materiei prime.
                 </p>
                 <p>
-                    [cite_start]Cu toate acestea, **nu se menționează explicit utilizarea unor tehnologii de formulare ultra-avansate precum micelizarea sau tehnologia lipozomală** (pe care le-am discutat anterior și care merg dincolo de forma chimică a uleiului, facilitând dispersia în mediul apos)[cite: 2]. [cite_start]Afirmația "asimilat ușor și rapid" se referă cel mai probabil la superioritatea formei rTG în comparație cu EE, nu la o tehnologie complet nouă de transport, gen NTC sau micelizare activă[cite: 2].
+                    Cu toate acestea, **nu se menționează explicit utilizarea unor tehnologii de formulare ultra-avansate precum micelizarea sau tehnologia lipozomală** (pe care le-am discutat anterior și care merg dincolo de forma chimică a uleiului, facilitând dispersia în mediul apos). Afirmația "asimilat ușor și rapid" se referă cel mai probabil la superioritatea formei rTG în comparație cu EE, nu la o tehnologie complet nouă de transport, gen NTC sau micelizare activă.
                 </p>
             </div>
         </div>
 
         <div class="conclusion-section">
-            <h2>Concluzie Generală:</h2>
+            <h2>Concluzie Generală</h2>
             <p>
-                [cite_start]Suplimentul cu Omega-3 de la Herbalife (Herbalifeline Max) pare a fi un supliment comun de calitate, cu accent pe sursa sustenabilă și caracteristici pentru confortul utilizatorului (fără postgust)[cite: 2]. Nu pare să integreze sau să promoveze explicit tehnologii de vârf (precum micelizarea avansată sau lipozomalizarea) menite să crească biodisponibilitatea într-un mod revoluționar, așa cum o fac alte companii specializate în formulări avansate sau cum afirmă NTC. [cite_start]Absorbția sa se bazează probabil pe mecanismele digestive standard pentru grăsimi, de aceea și recomandarea de a-l lua cu mesele[cite: 2].
+                Suplimentul cu Omega-3 de la Herbalife (Herbalifeline Max) pare a fi un supliment comun de calitate, cu accent pe sursa sustenabilă și caracteristici pentru confortul utilizatorului (fără postgust). Nu pare să integreze sau să promoveze explicit tehnologii de vârf (precum micelizarea avansată sau lipozomalizarea) menite să crească biodisponibilitatea într-un mod revoluționar, așa cum o fac alte companii specializate în formulări avansate sau cum afirmă NTC. Absorbția sa se bazează probabil pe mecanismele digestive standard pentru grăsimi, de aceea și recomandarea de a-l lua cu mesele.
             </p>
             <p>
-                [cite_start]Suplimentul Coral Club O!Мega-3 TG se încadrează într-o categorie de suplimente cu o bază științifică solidă în ceea ce privește forma chimică a Omega-3 pentru o biodisponibilitate îmbunătățită [cite: 2][cite_start], dar nu neapărat cu o tehnologie de transport "revoluționară" la fel de complexă ca unele concepte promovate pe piață (cum ar fi anumite formulări micelizate avansate)[cite: 2].
+                Suplimentul Coral Club O!Мega-3 TG se încadrează într-o categorie de suplimente cu o bază științifică solidă în ceea ce privește forma chimică a Omega-3 pentru o biodisponibilitate îmbunătățită, dar nu neapărat cu o tehnologie de transport "revoluționară" la fel de complexă ca unele concepte promovate pe piață (cum ar fi anumite formulări micelizate avansate).
             </p>
             <p>
-                [cite_start]Dacă adăugăm și factorul preț, este clar că produsul Coral Club O!Мega-3 TG este o alegere foarte corectă! [cite: 2]
+                Dacă adăugăm și factorul preț, este clar că produsul Coral Club O!Мega-3 TG este o alegere foarte corectă!
             </p>
         </div>
 
         <p class="footer-note">
-            <strong style="color: #0056b3;">Notă Importantă:</strong> Acest infografic compilează informații bazate pe descrierile produselor și cunoștințe științifice generale. Pentru detalii complete despre ingrediente și dozare, consultați întotdeauna eticheta produsului. Pentru recomandări personalizate, discutați cu un specialist în sănătate.
+            **Notă Importantă:** Acest infografic compilează informații bazate pe descrierile produselor și cunoștințe științifice generale. Pentru detalii complete despre ingrediente și dozare, consultați întotdeauna eticheta produsului. Pentru recomandări personalizate, discutați cu un specialist în sănătate.
         </p>
         <p class="copyright">© Dr. Ing. Radu Pascu</p>
     </div>

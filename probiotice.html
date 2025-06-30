@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografic Comparativ Probiotice</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .infographic-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            max-width: 950px; /* Lățime mai mare pentru conținut extins */
+            text-align: center;
+            border-top: 8px solid #4CAF50; /* Culoare specifică probioticelor */
+        }
+        h1 {
+            color: #2E7D32; /* Verde mai închis pentru titlu */
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+        }
+        h1::after {
+            content: '';
+            width: 150px;
+            height: 4px;
+            background-color: #8BC34A; /* Verde mai deschis */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            border-radius: 2px;
+        }
+        h2 {
+            color: #2E7D32;
+            font-size: 2em;
+            margin-top: 45px; /* Spațiu mai mare */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .product-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .product-card {
+            background-color: #fcfdff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pentru a asigura ca notele de subsol sunt la baza */
+        }
+        .product-card:hover {
+            transform: translateY(-7px);
+        }
+        .product-card h3 {
+            color: #3F51B5; /* Albastru pentru numele produselor */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .price-info {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #D32F2F; /* Roșu pentru preț */
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .product-card h4 {
+            color: #4CAF50; /* Verde pentru subtitluri interne */
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed #c8e6c9;
+            padding-bottom: 5px;
+        }
+        .product-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .product-card ul li {
+            background-color: #e8f5e9; /* Fundal verde deschis pentru itemi */
+            padding: 12px 18px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .product-card p {
+            text-align: justify;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .conclusion-section {
+            margin-top: 40px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            background-color: #fcfdff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .conclusion-section h2 {
+            color: #3F51B5; /* Albastru pentru concluzii */
+            margin-bottom: 25px;
+        }
+        .conclusion-section p {
+            text-align: justify;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #444;
+        }
+        .key-points-list {
+            list-style: disc; /* Stil clasic pentru listă */
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        .key-points-list li {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+            color: #555;
+        }
+        .footer-note {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 40px;
+            border-top: 1px dashed #ddd;
+            padding-top: 20px;
+            text-align: center;
+        }
+        .copyright {
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <h1>Analiză Comparativă: Suplimente cu Probiotice</h1>
+        <p class="intro">
+            O analiză detaliată a produselor Microbiotic Max (Herbalife), Super-Flora (Coral Club) și Quattrobiotic (Coral Club), plus o evaluare a strategiei de combinare.
+        </p>
+
+        <h2>Produse Individuale</h2>
+        <div class="product-comparison-grid">
+            <div class="product-card">
+                <h3>Microbiotic Max</h3>
+                <p class="price-info">
+                    Distribuitor: Herbalife | 20 capsule: 265 lei [cite: 2]
+                </p>
+                <h4>Tipuri de Tulpini Probiotice</h4>
+                <ul>
+                    <li>**_Lactobacillus helveticus_ R0052:** O tulpină bine-cunoscută, adesea studiată pentru beneficiile sale asupra sănătății digestive și potențialul de a modula sistemul imunitar. [cite: 2]</li>
+                    <li>**_Bifidobacterium lactis_ HN019:** O altă tulpină larg studiată, cunoscută pentru capacitatea sa de a îmbunătăți tranzitul intestinal și de a susține funcția imunitară. [cite: 2]</li>
+                </ul>
+                <h4>Număr de CFU</h4>
+                <p>Produsul este formulat să ofere 2 miliarde de CFU per porție. [cite: 2] Numărul de CFU se referă, de obicei, la momentul producției. [cite: 2] Viabilitatea tulpinilor până la consum este un aspect crucial. [cite: 2]</p>
+                <h4>Prebiotice</h4>
+                <p>Include fibre prebiotice sub formă de fructooligozaharide (FOS). [cite: 2] Această combinație de probiotice și prebiotice este denumită simbiotic și este considerată benefică pentru sănătatea intestinală. [cite: 2]</p>
+                <h4>Forma de Prezentare</h4>
+                <p>Pulbere, ușor de amestecat cu apă sau alte băuturi reci. [cite: 2]</p>
+                <h4>Ambalare și Stabilitate</h4>
+                <p>Probioticele sunt sensibile la căldură, umiditate și oxigen. [cite: 2] Herbalife menționează că se folosesc măsuri pentru a asigura stabilitatea. [cite: 2]</p>
+                <h4>Concluzie (Herbalife Microbiotic Max)</h4>
+                <p>Herbalife Microbiotic Max folosește tulpini probiotice și prebiotice validate științific (simbiotic), ceea ce este un fundament bun. [cite: 2] Numărul de CFU este decent, dar nu excepțional de mare. [cite: 2] Fără menționarea explicită a unor tehnologii avansate de protecție (microîncapsulare, înveliș enteric specific), se presupune că se bazează pe stabilitatea intrinsecă a tulpinilor alese și pe condițiile de depozitare. [cite: 2]</p>
+            </div>
+
+            <div class="product-card">
+                <h3>Super-Flora</h3>
+                <p class="price-info">
+                    Distribuitor: Coral Club | 90 capsule: 112,50 lei [cite: 2]
+                </p>
+                <h4>Tulpini Probiotice</h4>
+                <ul>
+                    <li>**_Lactobacillus acidophilus_:** O tulpină larg studiată și frecvent utilizată, cunoscută pentru capacitatea sa de a supraviețui în mediul acid gastric și de a coloniza intestinul subțire, contribuind la echilibrul microflorei și la susținerea sistemului imunitar. [cite: 2]</li>
+                    <li>**_Bifidobacterium longum_:** O tulpină comună din genul Bifidobacterium, predominantă în intestinul gros, importantă pentru sănătatea colonului, producția de acizi grași cu lanț scurt (SCFA) și modularea imunității. [cite: 2]</li>
+                </ul>
+                <h4>Număr de CFU</h4>
+                <p>Produsul conține 3 miliarde de CFU per capsulă (la momentul fabricației). [cite: 2]</p>
+                <h4>Prebiotic</h4>
+                <p>Include inulină, o fibră prebiotică extrasă de obicei din rădăcina de cicoare. [cite: 2] Inulina este un FOS și servește drept hrană pentru bacteriile benefice din colon, în special pentru Bifidobacterii. [cite: 2]</p>
+                <h4>Forma de Prezentare</h4>
+                <p>Capsule. [cite: 2]</p>
+                <h4>Tehnologii de Protecție/Livrare</h4>
+                <p>Informațiile publice nu menționează explicit tehnologii avansate de încapsulare (microîncapsulare, înveliș enteric specific) pentru a proteja bacteriile de acidul gastric. [cite: 2] Prezența capsulei vegetale standard ajută la transport, dar nu oferă neapărat o barieră extrem de rezistentă la acidul gastric comparativ cu tehnologiile avansate de înveliș enteric. [cite: 2]</p>
+                <h4>Concluzie (Super-Flora)</h4>
+                <p>Coral Club Super-Flora este un supliment probiotic-prebiotic (simbiotic) solid și clasic, cu o bază științifică clară în alegerea tulpinilor. [cite: 2] Numărul de 3 miliarde CFU per capsulă este o doză rezonabilă pentru întreținere. [cite: 2] Includerea inulinei ca prebiotic este un avantaj semnificativ. [cite: 2] Produsul nu menționează tehnologii avansate de protecție sau livrare, ceea ce înseamnă că eficacitatea sa depinde în mare măsură de rezistența intrinsecă a tulpinilor și de condițiile optime de depozitare și administrare. [cite: 2]</p>
+            </div>
+
+            <div class="product-card">
+                <h3>Quattrobiotic Formula</h3>
+                <p class="price-info">
+                    Distribuitor: Coral Club | 30 capsule: 112,50 lei [cite: 2]
+                </p>
+                <h4>Tulpini Probiotice</h4>
+                <ul>
+                    <li>**_Bifidobacterium lactis_ W51** [cite: 2]</li>
+                    <li>**_Lactobacillus acidophilus_ W22** [cite: 2]</li>
+                    <li>**_Lactobacillus plantarum_ W21** [cite: 2]</li>
+                    <li>**_Lactococcus lactis_ W19** [cite: 2]</li>
+                    <li>**Notă:** Abrevierea „W” indică, de obicei, că sunt tulpini proprietare, adesea izolate și studiate de un anumit producător. [cite: 2] Acest lucru poate indica o selecție riguroasă și, potențial, studii specifice pentru aceste tulpini. [cite: 2]</li>
+                </ul>
+                <h4>Număr de CFU</h4>
+                <p>Produsul este formulat să ofere 10 miliarde de CFU per porție (pliculeț), la momentul fabricației. [cite: 2] Aceasta este o doză semnificativ mai mare decât Super-Flora sau Herbalife Microbiotic Max. [cite: 2]</p>
+                <h4>Prebiotic</h4>
+                <p>Include un complex de prebiotice care combină inulina și FOS (fructooligozaharide). [cite: 2]</p>
+                <h4>Forma de Prezentare</h4>
+                <p>Pliculețe (pulbere orodispersabilă sau pentru amestec cu lichide), ceea ce poate contribui la o absorbție rapidă sau la o eliberare controlată. [cite: 2]</p>
+                <h4>Tehnologii de Protecție/Livrare</h4>
+                <p>Informațiile Coral Club sugerează un accent pe stabilitate și viabilitate. [cite: 2] Nu este menționată explicit o tehnologie de microîncapsulare, dar „stabilitatea garantată” sau „protecția prin matrice” pot indica o formulare inteligentă. [cite: 2] Faptul că sunt tulpini proprietare „W” adesea vine la pachet cu o mai bună stabilitate și rezistență gastrică intrinsecă. [cite: 2]</p>
+                <h4>Concluzie (Quattrobiotic Formula)</h4>
+                <p>Coral Club Quattrobiotic se poziționează ca un supliment probiotic-prebiotic mai avansat și cu o putere sporită, datorită dozajului și diversității tulpinilor. [cite: 2] Utilizarea a patru tulpini proprietare („W”) sugerează o selecție riguroasă și, potențial, o rezistență intrinsecă îmbunătățită. [cite: 2] Cu 10 miliarde CFU per porție, oferă o doză semnificativă. [cite: 2] Includerea unui mix de Inulină și FOS ca prebiotice diversifică hrana pentru microbiom. [cite: 2] Formularea în pliculețe individuale și utilizarea tulpinilor „W” indică un accent pe stabilitate și viabilitate. [cite: 2]</p>
+            </div>
+        </div>
+
+        <h2>Evaluarea Strategiei Tale: 1x Super-Flora + 1x Quattrobiotic vs. 1x Herbalife Microbiotic Max</h2>
+        <div class="conclusion-section">
+            <p>Strategia ta de a combina Super-Flora și Quattrobiotic este foarte bine gândită și are o bază științifică solidă pentru a fi potențial mai eficientă decât utilizarea doar a Herbalife Microbiotic Max, din mai multe motive: [cite: 3]</p>
+            <ul class="key-points-list">
+                <li>**Diversitate Mai Mare a Tulpinilor:** Herbalife oferă 2 tulpini. [cite: 4] Combinația ta oferă un total de 6 tulpini distincte (_L. acidophilus_, _B. longum_ din Super-Flora, și _B. lactis_ W51, _L. acidophilus_ W22, _L. plantarum_ W21, _L. lactis_ W19 din Quattrobiotic). [cite: 4] Diversitatea tulpinilor este adesea un avantaj, deoarece diferite tulpini au roluri diferite și colonizează segmente diferite ale tractului digestiv, oferind un spectru mai larg de beneficii. [cite: 5]</li>
+                <li>**Număr Total de CFU Semnificativ Mai Mare:** Herbalife oferă 2 miliarde CFU. [cite: 6] Combinația ta oferă 3 miliarde (Super-Flora) + 10 miliarde (Quattrobiotic) = 13 miliarde CFU. [cite: 7] O doză mai mare de CFU-uri viabile crește șansele ca un număr suficient de bacterii să ajungă vii în intestin și să exercite un efect benefic. [cite: 8]</li>
+                <li>**Completarea Prebioticelor:** Herbalife include FOS. [cite: 9] Combinația ta primește Inulină din Super-Flora și un mix de Inulină + FOS din Quattrobiotic. [cite: 9] Acest lucru oferă o sursă diversificată de fibre prebiotice, ceea ce poate sprijini o gamă mai largă de bacterii benefice din colon și asigura o hrană mai completă pentru ele. [cite: 10]</li>
+                <li>**Potențial pentru o Stabilitate și Livrare Mai Bune:** Deși Herbalife nu menționează tehnologii avansate, nici Super-Flora nu o face. [cite: 11] Însă, Quattrobiotic, prin utilizarea tulpinilor proprietare „W” (care sunt adesea selectate pentru rezistența lor la acid gastric și bilă) și prin formatul în pliculețe (ce poate fi mai stabil decât o pulbere dintr-un borcan deschis frecvent), are potențial să ofere o viabilitate superioară. [cite: 12]</li>
+                <li>**Acțiune Sinergică:** Având în vedere diversitatea tulpinilor (Lactobacilli care colonizează mai degrabă intestinul subțire și Bifidobacterii predominante în intestinul gros, plus alte tulpini specifice în Quattrobiotic) și complementul de prebiotice, o acțiune sinergică este foarte plauzibilă. [cite: 13] Diferitele tulpini pot îndeplini funcții complementare, iar prebioticele le asigură supraviețuirea și proliferarea. [cite: 14]</li>
+                <li>**Avantaj Economic:** Prețul combinației propuse este semnificativ mai mic. [cite: 15] Astfel, un tratament de 30 de zile cu produsul de la Herbalife ar costa aproape de 2,6 ori mai mult față de combinația propusă. [cite: 16]</li>
+            </ul>
+        </div>
+
+        <p class="footer-note">
+            **Notă Importantă:** Acest infografic compilează informații bazate pe descrierile produselor și cunoștințe științifice generale. Pentru detalii complete despre ingrediente și dozare, consultați întotdeauna eticheta produsului. Pentru recomandări personalizate, discutați cu un specialist în sănătate.
+        </p>
+        <p class="copyright">© Dr. Ing. Radu Pascu</p>
+    </div>
+</body>
+</html>

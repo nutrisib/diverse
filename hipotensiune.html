@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hipotensiunea - Echilibrul și Ancorarea</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f8f9fa; /* Light background */
+            color: #212529; /* Dark text */
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        .infographic-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        .infographic-header {
+            background-color: #0A2463; /* Dark blue from palette */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .infographic-header:before, .infographic-header:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .infographic-header:before {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent #0A2463 transparent; /* Match header background */
+            bottom: 0;
+            left: 0;
+        }
+        .infographic-header:after {
+            border-width: 20px 20px 0 0;
+            border-color: #0A2463 transparent transparent transparent; /* Match header background */
+            top: 0;
+            right: 0;
+        }
+
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #0A2463; /* Dark blue from palette */
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #3E92CC; /* Medium blue from palette */
+            padding-bottom: 5px;
+            align-self: stretch;
+        }
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+        }
+        .subsection {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff; /* White background for cards */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: transform 0.2s ease; /* Smooth hover effect */
+            border-left: 4px solid #06D6A0; /* Default border color for subsections */
+        }
+        /* Specific border colors for different subsections */
+        .subsection.border-yellow { border-left-color: #F4C150; }
+        .subsection.border-crimson { border-left-color: #D8315B; }
+        .subsection.border-green { border-left-color: #06D6A0; }
+        .subsection.border-blue { border-left-color: #3E92CC; }
+
+        .subsection:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+        .subsection-title {
+            font-size: 1.3em;
+            color: #0A2463; /* Dark blue for subsection titles */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .subsection p, .subsection ul, .subsection ol {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .subsection ul, .subsection ol {
+            list-style-type: disc; /* Default list style */
+            padding-left: 20px;
+        }
+        .subsection li {
+            margin-bottom: 5px;
+        }
+        .subsection b {
+            color: #212529; /* Darker text for bold */
+        }
+        .note {
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text for notes */
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text */
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        /* Media queries pentru responsivitate */
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            .subsection {
+                min-width: unset;
+            }
+            .infographic-header {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="infographic-header">
+            Hipotensiunea: echilibrul și ancorarea - un ghid complet și științific
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Hipotensiunea - perspectiva fizică</h2>
+            <div class="section-content">
+                <div class="subsection">
+                    <h3 class="subsection-title">Descriere</h3>
+                    <p>Hipotensiunea arterială, sau tensiunea arterială scăzută, este o condiție în care forța sângelui împotriva pereților arterelor este anormal de mică. Deși o tensiune arterială scăzută poate fi un semn de sănătate cardiovasculară optimă la unii indivizi, hipotensiunea simptomatică poate indica o problemă subiacentă și poate afecta semnificativ calitatea vieții și funcționarea organelor. Valorile considerate, în general, hipotensive sunt sub 90/60 mmHg (sistolică/diastolică).</p>
+                    <ul>
+                        <li><b>Reglarea tensiunii arteriale:</b> Tensiunea arterială este reglată complex de volumul sanguin, rezistența vasculară periferică și forța de contracție a inimii. Disfuncțiile în oricare dintre aceste componente pot duce la hipotensiune.</li>
+                        <li><b>Tipuri de hipotensiune:</b>
+                            <ul>
+                                <li><b>Hipotensiune ortostatică (posturală):</b> O scădere bruscă a tensiunii arteriale la ridicarea în picioare, din cauza unei adaptări insuficiente a sistemului cardiovascular.</li>
+                                <li><b>Hipotensiune postprandială:</b> Scăderea tensiunii arteriale după masă, pe măsură ce sângele este direcționat către sistemul digestiv.</li>
+                                <li><b>Hipotensiune mediată neural (vasovagală):</b> O scădere bruscă a tensiunii arteriale și a ritmului cardiac, adesea declanșată de stres emoțional, durere, statul prelungit în picioare.</li>
+                                <li><b>Hipotensiune severă (șoc):</b> O scădere critică a tensiunii arteriale care duce la o perfuzie insuficientă a organelor și țesuturilor, o urgență medicală.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3 class="subsection-title">Simptome și complicații</h3>
+                    <p>Simptomele hipotensiunii pot varia de la ușoare la severe, afectând calitatea vieții și, în cazuri extreme, punând viața în pericol.</p>
+                    <ol>
+                        <li><b>Simptome comune:</b>
+                            <ul>
+                                <li>Amețeli sau senzație de leșin (presincopă).</li>
+                                <li>Vedere încețoșată.</li>
+                                <li>Oboseală, letargie, lipsă de energie.</li>
+                                <li>Greață.</li>
+                                <li>Dificultăți de concentrare.</li>
+                                <li>Piele rece și palidă.</li>
+                                <li>Sete excesivă.</li>
+                            </ul>
+                        </li>
+                        <li><b>Simptome severe (care necesită atenție medicală imediată):</b>
+                            <ul>
+                                <li>Leșin (sincopă).</li>
+                                <li>Confuzie mentală severă.</li>
+                                <li>Piele rece, umedă și palidă.</li>
+                                <li>Respirație rapidă și superficială.</li>
+                                <li>Puls slab și rapid.</li>
+                            </ul>
+                        </li>
+                        <li><b>Complicații (în cazuri severe sau cronice):</b>
+                            <ul>
+                                <li><b>Leșinuri și căzături:</b> Risc crescut de traumatisme.</li>
+                                <li><b>Șoc:</b> Hipotensiunea severă poate duce la șoc, o condiție medicală de urgență în care organele nu primesc suficient sânge și oxigen, putând provoca leziuni permanente sau deces.</li>
+                                <li><b>Insuficiență cardiacă sau renală:</b> Pe termen lung, perfuzia inadecvată a organelor poate afecta funcția acestora.</li>
+                                <li><b>Accident vascular cerebral:</b> Deși mai rar decât în hipertensiune, episoadele severe de hipotensiune pot afecta fluxul sanguin cerebral.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="subsection">
+                    <h3 class="subsection-title">Cauze și factori de risc</h3>
+                    <p>Hipotensiunea poate fi cauzată de o varietate de factori, de la condiții benigne la afecțiuni medicale grave.</p>
+                    <ul>
+                        <li><b>Deshidratare:</b> Lipsa aportului de lichide sau pierderile excesive (vărsături, diaree, transpirație intensă) reduc volumul sanguin. (Referință: Graur, M. (2014). Dezechilibre Hidro-Electrolitice și Acido-Bazice. Editura "Gr. T. Popa".)</li>
+                        <li><b>Pierderi de sânge:</b> Hemoragii acute (traume, sângerări gastrointestinale).</li>
+                        <li><b>Afecțiuni cardiace:</b> Insuficiență cardiacă, bradicardie (ritm cardiac lent), aritmii, probleme valvulare, infarct miocardic. Inima nu pompează suficient sânge. (Referință: Harrison's Principles of Internal Medicine, Vol 1 & 2.)</li>
+                        <li><b>Tulburări endocrine:</b> Hipotiroidism (încetinirea metabolismului), insuficiență suprarenală (boala Addison), diabet (neuropatia diabetică poate afecta nervii care controlează tensiunea arterială). (Referință: Hâncu, N. (2010). Diabetul Zaharat, Nutriția și Bolile Metabolice. Echinox.)</li>
+                        <li><b>Infecții severe (sepsis):</b> Răspunsul inflamator sistemic poate provoca vasodilatație masivă și scăderea tensiunii arteriale.</li>
+                        <li><b>Reacții alergice severe (anafilaxie):</b> Eliberarea de histamină provoacă vasodilatație bruscă.</li>
+                        <li><b>Deficiențe nutriționale:</b> Anemie (deficit de fier, B12), deficit de folat, deficit de vitamina C. (Referință: Mindell, E. (1991). Earl Mindell's Vitamin Bible. Warner Books.)</li>
+                        <li><b>Medicamente:</b> Diuretice, alfa-blocante, beta-blocante, antidepresive, medicamente pentru disfuncția erectilă.</li>
+                        <li><b>Sarcina:</b> Modificările circulatorii și hormonale pot duce la o tensiune arterială mai scăzută.</li>
+                        <li><b>Statul prelungit în picioare.</b></li>
+                        <li><b>Stresul emoțional sever.</b></li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3 class="subsection-title">Diagnostic</h3>
+                    <p>Diagnosticul hipotensiunii se bazează pe măsurarea tensiunii arteriale, evaluarea simptomelor și identificarea cauzei subiacente.</p>
+                    <ul>
+                        <li><b>Măsurarea tensiunii arteriale:</b> Măsurători repetate, în diferite poziții (culcat, șezând, în picioare).</li>
+                        <li><b>Istoric medical și examen fizic:</b> Evaluarea simptomelor, istoricul familial, medicamentele utilizate, condițiile medicale preexistente.</li>
+                        <li><b>Teste de laborator:</b>
+                            <ul>
+                                <li><b>Hemogramă completă:</b> Pentru a detecta anemie.</li>
+                                <li><b>Electroliți:</b> Pentru a evalua echilibrul sodiului, potasiului, clorului.</li>
+                                <li><b>Funcția renală și hepatică.</b></li>
+                                <li><b>Teste tiroidiene (TSH, T4 liber):</b> Pentru a exclude hipotiroidism.</li>
+                                <li><b>Glicemia:</b> Pentru a exclude diabetul.</li>
+                            </ul>
+                        </li>
+                        <li><b>Electrocardiogramă (ECG):</b> Pentru a evalua ritmul cardiac și a detecta aritmii sau alte probleme cardiace.</li>
+                        <li><b>Ecocardiografie:</b> Pentru a evalua structura și funcția inimii.</li>
+                        <li><b>Testul mesei înclinate (tilt table test):</b> Utilizat pentru a diagnostica hipotensiunea mediată neural, monitorizând tensiunea arterială și ritmul cardiac la schimbarea poziției.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Hipotensiunea - perspectiva holistică</h2>
+            <p>Din perspectivă holistică, hipotensiunea este profund asociată cu **lipsa de ancorare, dificultatea de a te "împământa" în realitate, sentimentul de a fi "fără energie" sau "drenat" emoțional, și o lipsă de "presiune" sau motivație interioară**. Rezonează cu o tendință de a evita confruntarea cu realitatea materială, de a fi "prea eteric" sau de a nu-ți asuma pe deplin puterea personală.</p>
+
+            <div class="section-content">
+                <div class="subsection border-crimson">
+                    <h3 class="subsection-title"><span class="icon">💔</span> Cauze emoționale și energetice</h3>
+                    <p>Hipotensiunea, ca o condiție de dezechilibru, poate fi legată de următoarele aspecte emoționale și energetice:</p>
+                    <ol>
+                        <li><b>Lipsa de ancorare și împământare:</b> Un sentiment de a fi "plutitor", deconectat de realitatea fizică și de propriul corp. O dificultate de a te simți stabil și în siguranță în lumea materială.</li>
+                        <li><b>Lipsa de "presiune" sau motivație interioară:</b> O apatie, o lipsă de entuziasm sau de dorință de a acționa. Sentimentul de a nu avea "forța" sau "impulsul" necesar pentru a-ți urma scopurile.</li>
+                        <li><b>Drenaj energetic și epuizare:</b> Un sentiment profund de oboseală, ca și cum energia vitală ar fi constant "drenată" sau nu s-ar reface suficient. Poate fi legat de epuizare adrenală sau de a oferi prea mult fără a primi înapoi.</li>
+                        <li><b>Evitarea confruntării cu realitatea:</b> O tendință de a te retrage din situații dificile sau de a evita aspectele "dure" ale vieții, preferând o stare de "visare" sau de pasivitate.</li>
+                        <li><b>Lipsa de curaj de a-ți asuma puterea:</b> Dificultăți în a-ți asuma pe deplin puterea personală, în a te afirma și în a-ți stabili granițe. Un sentiment de a fi "mic" sau insignifiant.</li>
+                        <li><b>Dezechilibre în chakra rădăcină (Muladhara):</b> Această chakră este asociată cu siguranța, stabilitatea, supraviețuirea și conexiunea cu pământul. Un dezechilibru aici poate contribui la sentimente de lipsă de ancorare și la simptome fizice precum hipotensiunea.</li>
+                        <li><b>Lipsa de "sare" în viață:</b> O metaforă pentru lipsa de entuziasm, de pasiune sau de "gust" pentru experiențe, ducând la o stare de platitudine emoțională.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Calea spre echilibru: strategii holistice pentru ancorare și vitalitate</h2>
+            <p>Pentru a aborda hipotensiunea din perspectivă holistică, pe lângă tratamentul medical convențional (dacă este necesar), se recomandă o abordare personalizată, care vizează atât aspectele fizice, cât și pe cele emoționale, mentale și energetice, în contextul misiunii de a trata problemele metabolice și cardiovasculare:</p>
+            <div class="section-content">
+                <div class="subsection border-blue">
+                    <h3 class="subsection-title">Nutriție și suplimentare (reechilibrare nutrițională)</h3>
+                    <ul>
+                        <li><b>Hidratare optimă:</b> Consumul adecvat de apă pură și electroliți (sodiu, potasiu, magneziu) este fundamental pentru menținerea volumului sanguin și a tensiunii arteriale. Poate fi necesar un aport ușor crescut de sare (din surse naturale) și potasiu. (Referință: Graur, M. (2014). Dezechilibre Hidro-Electrolitice și Acido-Bazice. Editura "Gr. T. Popa".)</li>
+                        <li><b>Dietă bogată în nutrienți:</b> Asigurarea unui aport adecvat de vitamine B (în special B12 și folat), fier și vitamina C, care sunt esențiale pentru producția de celule sanguine și energie.</li>
+                        <li><b>Mese mici și frecvente:</b> Pentru a preveni hipotensiunea postprandială și a asigura un flux constant de energie.</li>
+                        <li><b>Evitarea carbohidraților rafinați și a zahărului:</b> Aceștia pot provoca fluctuații glicemice care pot contribui la instabilitatea tensiunii arteriale.</li>
+                        <li><b>Suplimente premium (sub îndrumare):</b>
+                            <ul>
+                                <li><b>Electroliți:</b> Suplimente cu sodiu, potasiu, magneziu.</li>
+                                <li><b>Vitamina B12 și folat:</b> Dacă există deficiențe, pentru a preveni anemia.</li>
+                                <li><b>Vitamina C:</b> Susține integritatea vaselor de sânge.</li>
+                                <li><b>Plante adaptogene:</b> Rhodiola, ginseng (pentru suport adrenal și energetic, sub îndrumare).</li>
+                                <li><b>Licorice (rădăcină de lemn dulce):</b> Poate ajuta la creșterea tensiunii arteriale (cu prudență, poate crește și potasiul).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection border-yellow">
+                    <h3 class="subsection-title">Terapii minte-corp și echilibrare energetică (ancorare și revitalizare)</h3>
+                    <ul>
+                        <li><b>Practici de împământare (grounding):</b> Contactul direct cu natura (mers desculț pe iarbă, pământ), vizualizări ale rădăcinilor care te conectează cu pământul. Acestea ajută la stabilizarea energiei și la sentimentul de siguranță.</li>
+                        <li><b>Meditație și mindfulness:</b> Practici de calmare a minții și de reconectare cu prezentul. Meditațiile ghidate pot viza vizualizarea energiei care curge ascendent din pământ și te umple de vitalitate.</li>
+                        <li><b>Terapii pentru eliberarea blocajelor emoționale:</b> Jurnalism terapeutic, art-terapie, sau consiliere psihologică pentru a procesa sentimentele de lipsă de putere, apatie sau teamă de a te afirma.</li>
+                        <li><b>Lucrul cu chakra rădăcină (Muladhara):</b> Meditații și exerciții de vizualizare pentru a armoniza această chakră, asociată cu siguranța, stabilitatea și conexiunea cu realitatea materială.</li>
+                        <li><b>Afirmații pozitive:</b> Formularea și repetarea de afirmații care susțin ancorarea, vitalitatea și puterea personală (de exemplu: "Sunt puternic/ă și ancorat/ă. Am energie din abundență. Îmi asum pe deplin puterea.").</li>
+                        <li><b>Terapii energetice:</b> Reiki, acupunctura, presopunctura pot ajuta la echilibrarea fluxului energetic și la revitalizarea corpului subtil. (Referință: Whittle, T. (2016). Encyclopedia of Manual and Energy Therapies. Library Press.)</li>
+                    </ul>
+                </div>
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Stil de viață (consolidarea ritmului)</h3>
+                    <ul>
+                        <li><b>Activitate fizică regulată:</b> Exercițiile fizice moderate (mers pe jos, înot, yoga) îmbunătățesc circulația sanguină și tonusul vascular. Evită statul prelungit în picioare.</li>
+                        <li><b>Evitarea schimbărilor bruște de poziție:</b> Ridică-te lent din poziția culcat sau șezând pentru a permite corpului să se adapteze.</li>
+                        <li><b>Mese mici și regulate:</b> Pentru a preveni scăderile de tensiune postprandiale.</li>
+                        <li><b>Gestionarea stresului:</b> Tehnici de relaxare (respirație profundă, yoga, mindfulness) pentru a reduce impactul stresului asupra sistemului nervos autonom și a tensiunii arteriale.</li>
+                        <li><b>Somn odihnitor:</b> Prioritizarea unui somn de calitate este esențială pentru regenerarea corpului și a sistemului nervos.</li>
+                        <li><b>Evitarea alcoolului:</b> Alcoolul poate contribui la deshidratare și la vasodilatație, agravând hipotensiunea.</li>
+                        <li><b>Ciorapi compresivi:</b> Pot ajuta la menținerea fluxului sanguin către inimă și creier, reducând acumularea de sânge în picioare.</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="note">Este esențial ca orice abordare holistică să fie complementară tratamentului medical și să nu îl înlocuiască, mai ales în cazul unor afecțiuni serioase. Un terapeut holistic poate lucra alături de un medic pentru a oferi o îngrijire integrată.</p>
+        </section>
+
+        <footer class="footer-copyright">
+            <p>Copyright: dr.ing. Radu Pascu - 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

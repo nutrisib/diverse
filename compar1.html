@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immune Booster: suportul imunitar - o analiză științifică și holistică</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f8f9fa; /* Light background */
+            color: #212529; /* Dark text */
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        .infographic-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        .infographic-header {
+            background-color: #0A2463; /* Dark blue from palette */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .infographic-header:before, .infographic-header:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .infographic-header:before {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent #0A2463 transparent; /* Match header background */
+            bottom: 0;
+            left: 0;
+        }
+        .infographic-header:after {
+            border-width: 20px 20px 0 0;
+            border-color: #0A2463 transparent transparent transparent; /* Match header background */
+            top: 0;
+            right: 0;
+        }
+
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #0A2463; /* Dark blue from palette */
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #3E92CC; /* Medium blue from palette */
+            padding-bottom: 5px;
+            align-self: stretch;
+        }
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+        }
+        .subsection {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff; /* White background for cards */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: transform 0.2s ease; /* Smooth hover effect */
+            border-left: 4px solid #06D6A0; /* Default border color for subsections */
+        }
+        /* Specific border colors for different subsections */
+        .subsection.border-yellow { border-left-color: #F4C150; }
+        .subsection.border-crimson { border-left-color: #D8315B; }
+        .subsection.border-green { border-left-color: #06D6A0; }
+        .subsection.border-blue { border-left-color: #3E92CC; }
+        .subsection.border-darkblue { border-left-color: #0A2463; }
+
+        .subsection:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+        .subsection-title {
+            font-size: 1.3em;
+            color: #0A2463; /* Dark blue for subsection titles */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .subsection p, .subsection ul, .subsection ol {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .subsection ul, .subsection ol {
+            list-style-type: disc; /* Default list style */
+            padding-left: 20px;
+        }
+        .subsection li {
+            margin-bottom: 5px;
+        }
+        .subsection b {
+            color: #212529; /* Darker text for bold */
+        }
+        .note {
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text for notes */
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text */
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        /* Media queries pentru responsivitate */
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            .subsection {
+                min-width: unset;
+            }
+            .infographic-header {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="infographic-header">
+            Immune Booster: suportul imunitar - o analiză științifică și holistică
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Producătorul Immune Booster: angajamentul Herbalife pentru calitate și inovație</h2>
+            <div class="section-content">
+                <div class="subsection">
+                    <p>Immune Booster este un produs al companiei **Herbalife Nutrition**, o companie globală de nutriție fondată în 1980. Herbalife este recunoscută pentru angajamentul său față de calitate, știință și inovație în dezvoltarea de suplimente alimentare și produse de nutriție. Filozofia companiei se bazează pe conceptul "de la sămânță la consumator", asigurând un control riguros al calității pe întreg lanțul de producție.</p>
+                    <ul>
+                        <li><b>Vechime și experiență:</b> Cu peste 40 de ani de experiență în industria nutriției, Herbalife a acumulat un know-how vast în formularea și producția de suplimente eficiente.</li>
+                        <li><b>Cercetare și dezvoltare:</b> Compania investește semnificativ în cercetare și dezvoltare, având un board științific de elită, format din medici și experți recunoscuți la nivel mondial. Această echipă este responsabilă pentru validarea științifică a produselor și integrarea celor mai recente descoperiri în nutriție și imunologie.</li>
+                        <li><b>Standarde de calitate și puritate:</b> Produsele Herbalife sunt fabricate conform standardelor GMP (Good Manufacturing Practices) în facilități proprii. Un control riguros al calității este implementat de la materiile prime (monitorizarea solului, a apei și a practicilor agricole) până la produsul finit.</li>
+                        <li><b>Testări riguroase și certificări externe:</b> Fiecare lot de produse este supus unor teste extinse în laboratoare acreditate pentru a verifica puritatea, identitatea și concentrația ingredientelor active, precum și absența contaminanților (pesticide, metale grele, microorganisme). Multe produse Herbalife sunt testate de laboratoare independente, garantând siguranța și puritatea.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Compoziția și știința ingredientelor cheie: o sinergie pentru suport imunitar</h2>
+            <div class="section-content">
+                <div class="subsection border-blue">
+                    <h3 class="subsection-title">Vitamina C: antioxidant și imunomodulator</h3>
+                    <ul>
+                        <li><b>Descriere:</b> Acidul ascorbic, o vitamină hidrosolubilă esențială.</li>
+                        <li><b>Mecanism de acțiune:</b> Vitamina C este un antioxidant puternic, protejând celulele imunitare de stresul oxidativ. Este crucială pentru funcția fagocitelor (celule care "înghit" patogenii) și a limfocitelor. De asemenea, susține integritatea barierelor epiteliale (pielea, mucoasele), prima linie de apărare. <!-- Referință: Mindell, E. (1991). Earl Mindell's Vitamin Bible. Warner Books. --></li>
+                        <li><b>Beneficii potențiale:</b>
+                            <ul>
+                                <li>Reducerea duratei și severității răcelilor comune.</li>
+                                <li>Întărirea răspunsului imun adaptativ și înnăscut.</li>
+                                <li>Protecție celulară împotriva daunelor oxidative.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Vitamina D: hormon imunomodulator</h3>
+                    <ul>
+                        <li><b>Descriere:</b> O vitamină liposolubilă, care acționează ca un pro-hormon.</li>
+                        <li><b>Mecanism de acțiune:</b> Receptorii pentru Vitamina D sunt prezenți pe majoritatea celulelor imunitare (limfocite T și B, macrofage), indicând un rol direct în modularea răspunsului imun. Influențează atât imunitatea înnăscută, cât și pe cea adaptativă, și poate reduce inflamația excesivă. <!-- Referință: Combs, G. F., & McClung, J. P. (2017). The Vitamins. Academic Press. --></li>
+                        <li><b>Beneficii potențiale:</b>
+                            <ul>
+                                <li>Reducerea riscului de infecții respiratorii acute.</li>
+                                <li>Modularea răspunsului imun în boli autoimune.</li>
+                                <li>Suport pentru sănătatea oaselor și starea de spirit.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection border-yellow">
+                    <h3 class="subsection-title">Zinc: mineral esențial pentru imunitate</h3>
+                    <ul>
+                        <li><b>Descriere:</b> Un oligoelement esențial, cofactor pentru peste 300 de enzime.</li>
+                        <li><b>Mecanism de acțiune:</b> Zincul este crucial pentru dezvoltarea și funcționarea celulelor imunitare (limfocite T, celule NK, macrofage). Deficiența de zinc afectează grav imunitatea, crescând susceptibilitatea la infecții. Este implicat în semnalizarea celulară și în reglarea expresiei genice a proteinelor imunitare. <!-- Referință: Razzaque, M. S., & Wimalawansa, S. J. (2025). Minerals and Human Health: From Deficiency to Toxicity. Nutrients. --></li>
+                        <li><b>Beneficii potențiale:</b>
+                            <ul>
+                                <li>Întărirea răspunsului imun antiviral și antibacterian.</li>
+                                <li>Reducerea duratei și severității răcelilor comune.</li>
+                                <li>Suport pentru vindecarea rănilor.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection border-crimson">
+                    <h3 class="subsection-title">Seleniu: antioxidant și suport tiroidian</h3>
+                    <ul>
+                        <li><b>Descriere:</b> Un oligoelement esențial, componentă a selenoproteinelor.</li>
+                        <li><b>Mecanism de acțiune:</b> Seleniul este o componentă cheie a enzimelor glutation peroxidaza, un sistem antioxidant major care protejează celulele imunitare de stresul oxidativ. De asemenea, este esențial pentru funcția tiroidiană, care influențează indirect metabolismul și răspunsul imun. <!-- Referință: Razzaque, M. S., & Wimalawansa, S. J. (2025). Minerals and Human Health: From Deficiency to Toxicity. Nutrients. --></li>
+                        <li><b>Beneficii potențiale:</b>
+                            <ul>
+                                <li>Protecție antioxidantă pentru celulele imunitare.</li>
+                                <li>Modularea răspunsului imun și reducerea inflamației.</li>
+                                <li>Suport pentru funcția tiroidiană.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Extracte de plante (echinacea, soc, beta-glucani): imunomodulatoare</h3>
+                    <ul>
+                        <li><b>Descriere:</b> Imunoboosterele pot conține extracte din plante recunoscute pentru proprietățile lor imunomodulatoare.</li>
+                        <li><b>Mecanism de acțiune:</b>
+                            <ul>
+                                <li><b>Echinacea:</b> Poate stimula activitatea celulelor imunitare (macrofage, celule NK) și producția de citokine, reducând simptomele răcelii. <!-- Referință: Longe, J. L. (Ed.). (2005). The Gale Encyclopedia of Alternative Medicine. --></li>
+                                <li><b>Soc (Elderberry):</b> Bogat în antocianine, are proprietăți antivirale și antioxidante, putând inhiba replicarea virală și reduce inflamația.</li>
+                                <li><b>Beta-glucani:</b> Polizaharide din ciuperci sau drojdie, activează celulele imunitare (macrofage, neutrofile), îmbunătățind răspunsul imun înnăscut.</li>
+                            </ul>
+                        </li>
+                        <li><b>Beneficii potențiale:</b>
+                            <ul>
+                                <li>Reducerea incidenței și duratei infecțiilor respiratorii.</li>
+                                <li>Suport pentru răspunsul imun antiviral.</li>
+                                <li>Proprietăți antiinflamatorii.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Beneficii fiziologice detaliate ale Immune Booster: o abordare sistemică</h2>
+            <div class="section-content">
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Întărirea sistemului imunitar și reziliența la infecții</h3>
+                    <ul>
+                        <li><b>Răspuns imun rapid și eficient:</b> Combinația de vitamine și minerale esențiale (C, D, zinc, seleniu) susține fiecare etapă a răspunsului imun, de la recunoașterea patogenilor la eliminarea acestora. Vitamina D și zincul sunt cruciale pentru maturarea și funcția limfocitelor, iar Vitamina C și seleniul protejează celulele imunitare de stresul oxidativ intens din timpul infecțiilor.</li>
+                        <li><b>Integritatea barierelor protectoare:</b> Vitamina C contribuie la sinteza colagenului, esențial pentru sănătatea pielii și a mucoaselor respiratorii și digestive, care formează prima linie de apărare împotriva patogenilor.</li>
+                        <li><b>Reducerea inflamației:</b> Ingredientele cu proprietăți antioxidante și antiinflamatorii (Vitamina C, seleniu, extracte de plante) ajută la modularea răspunsului inflamator, prevenind inflamația excesivă care poate dăuna țesuturilor.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-yellow">
+                    <h3 class="subsection-title">Energie, vitalitate și recuperare</h3>
+                    <ul>
+                        <li><b>Producția de ATP:</b> Vitaminele din complexul B, deși nu sunt întotdeauna un ingredient major în toate formulele Immune Booster, sunt esențiale pentru metabolismul energetic și producția de ATP. Un sistem imunitar care funcționează optim necesită multă energie.</li>
+                        <li><b>Reducerea oboselii:</b> Prin susținerea funcției imunitare și reducerea sarcinii infecțioase, Immune Booster poate contribui la reducerea oboselii asociate cu infecțiile recurente sau cu un sistem imunitar slăbit.</li>
+                        <li><b>Recuperare rapidă:</b> Un sistem imunitar robust permite o recuperare mai rapidă după episoade de boală, reducând durata și severitatea simptomelor.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-crimson">
+                    <h3 class="subsection-title">Suport pentru microbiom și sănătate generală</h3>
+                    <ul>
+                        <li><b>Echilibrul microbiotei:</b> Deși nu toate formulele Immune Booster conțin probiotice, o dietă bogată în fibre și alimente fermentate, alături de micronutrienții din supliment, poate susține sănătatea microbiotei intestinale, care este strâns legată de imunitate.</li>
+                        <li><b>Axa intestin-creier-imunitate:</b> Un microbiom sănătos influențează pozitiv axa intestin-creier, contribuind la o stare de spirit echilibrată și la reducerea stresului, factori care, la rândul lor, modulează răspunsul imun.</li>
+                        <li><b>Protecție celulară:</b> Antioxidanții din Immune Booster protejează celulele de stresul oxidativ, contribuind la sănătatea generală și la prevenția bolilor cronice.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Immune Booster - perspectiva holistică: reziliență, protecție și echilibru interior</h2>
+            <p>Din perspectivă holistică, Immune Booster, prin acțiunea sa de fortificare a sistemului imunitar, este profund asociat cu **reziliența interioară, cu capacitatea de autoapărare, cu stabilirea unor granițe sănătoase (fizice și energetice) și cu menținerea unei stări de integritate și vitalitate**. Rezonează cu un sentiment de siguranță, putere personală și echilibru în fața provocărilor externe.</p>
+
+            <div class="section-content">
+                <div class="subsection border-yellow">
+                    <h3 class="subsection-title"><span class="icon">🛡️</span> Protecție și granițe sănătoase</h3>
+                    <ul>
+                        <li><b>Scutul energetic:</b> Un sistem imunitar puternic la nivel fizic se traduce, holistic, printr-un câmp energetic (aură) robust și intact, care acționează ca un scut protector împotriva influențelor negative externe (emoții toxice, energii joase, stres). Immune Booster poate susține întărirea acestui "scut".</li>
+                        <li><b>Stabilirea granițelor:</b> O imunitate bună reflectă capacitatea de a-ți stabili și menține granițe clare în relații și în fața cerințelor externe, fără a te simți copleșit sau "invadat" energetic.</li>
+                        <li><b>Autoapărare:</b> Simbolizează abilitatea de a te apăra de "atacurile" emoționale sau psihologice, de a-ți proteja spațiul personal și de a nu permite altora să-ți "dreneze" energia.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-crimson">
+                    <h3 class="subsection-title"><span class="icon">⚡</span> Reziliență și vitalitate interioară</h3>
+                    <ul>
+                        <li><b>Forța vitală (Qi):</b> Un sistem imunitar robust este o manifestare a unei forțe vitale (Qi) puternice și echilibrate. Immune Booster poate contribui la reîncărcarea și consolidarea acestei energii esențiale.</li>
+                        <li><b>Capacitatea de recuperare:</b> Similar cu recuperarea fizică rapidă după boală, la nivel holistic, se referă la abilitatea de a te reface rapid după șocuri emoționale, perioade de stres intens sau traume, menținând un echilibru interior.</li>
+                        <li><b>Curajul de a înfrunta:</b> O imunitate puternică poate conferi curajul de a înfrunta provocările vieții, de a-ți asuma riscuri și de a depăși obstacolele, știind că ai resurse interne de protecție.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-green">
+                    <h3 class="subsection-title"><span class="icon">⚖️</span> Echilibru și armonie interioară</h3>
+                    <ul>
+                        <li><b>Homeostazie energetică:</b> Un sistem imunitar echilibrat reflectă o stare de homeostazie la nivel energetic, unde toate sistemele corpului subtil funcționează în armonie.</li>
+                        <li><b>Discernământ:</b> Capacitatea de a "discernă" ce este benefic și ce este dăunător pentru tine, atât la nivel fizic (alimente, mediu), cât și la nivel emoțional (relații, gânduri).</li>
+                        <li><b>Pacea minții:</b> Reducerea stresului și a anxietății, adesea asociate cu un sistem imunitar slăbit, contribuie la o stare de pace interioară și la o mai bună conectare cu sinele autentic.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Comparație detaliată: Immune Booster (Herbalife) vs. Munogen (PM-International)</h2>
+            <div class="section-content">
+                <div class="subsection border-blue">
+                    <h3 class="subsection-title">Immune Booster (Herbalife): suport imunitar țintit</h3>
+                    <p>Immune Booster de la Herbalife Nutrition este formulat specific pentru a oferi un suport concentrat și țintit sistemului imunitar, contribuind la întărirea rezistenței organismului împotriva infecțiilor și la menținerea sănătății celulare.</p>
+                    <h4>Ingrediente cheie și mecanisme de acțiune:</h4>
+                    <ul>
+                        <li><b>Vitamina C:</b> Antioxidant puternic, esențial pentru funcția fagocitelor și a limfocitelor, protejează celulele imunitare.</li>
+                        <li><b>Vitamina D:</b> Hormon imunomodulator, reglează răspunsul imun înnăscut și adaptativ.</li>
+                        <li><b>Zinc:</b> Mineral crucial pentru dezvoltarea și funcționarea celulelor imunitare, implicat în semnalizarea celulară.</li>
+                        <li><b>Seleniu:</b> Antioxidant cheie (componentă a glutation peroxidazei), protejează celulele imunitare de stresul oxidativ.</li>
+                        <li><b>Extracte de plante (echinacea, soc, beta-glucani):</b> Imunomodulatoare, pot stimula activitatea celulelor imunitare și reduce simptomele infecțiilor respiratorii.</li>
+                    </ul>
+                    <h4>Beneficii principale:</h4>
+                    <ul>
+                        <li>Întărirea răspunsului imun rapid și eficient.</li>
+                        <li>Reducerea duratei și severității infecțiilor.</li>
+                        <li>Protecție celulară împotriva stresului oxidativ.</li>
+                        <li>Suport pentru integritatea barierelor protectoare (piele, mucoase).</li>
+                    </ul>
+                    <h4>Angajamentul Herbalife:</h4>
+                    <ul>
+                        <li>Companie globală cu peste 40 de ani de experiență.</li>
+                        <li>Filozofia "de la sămânță la consumator" pentru controlul calității.</li>
+                        <li>Board științific de elită pentru validare și inovație.</li>
+                        <li>Fabricat conform standardelor GMP, cu testări riguroase în laboratoare proprii și independente.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Munogen (PM-International): optimizarea circulației și vitalității</h3>
+                    <p>Munogen de la PM-International AG este formulat pentru a sprijini optimizarea circulației sanguine, a vitalității și a performanței fizice, acționând prin ingrediente care susțin producția de oxid nitric și sănătatea vasculară.</p>
+                    <h4>Ingrediente cheie și mecanisme de acțiune:</h4>
+                    <ul>
+                        <li><b>L-arginină și L-citrulină:</b> Precursori ai oxidului nitric (NO), un puternic vasodilatator care relaxează vasele de sânge și îmbunătățește fluxul sanguin.</li>
+                        <li><b>Vitamine din complexul B (B6, B9/folat, B12):</b> Cruciale pentru metabolismul homocisteinei (reducerea riscului cardiovascular) și pentru producția de energie.</li>
+                        <li><b>Vitamina C și Vitamina E:</b> Antioxidanți care protejează celulele endoteliale de stresul oxidativ și susțin elasticitatea vaselor de sânge.</li>
+                        <li><b>Zinc și seleniu:</b> Minerale esențiale cu rol antioxidant și de suport imunitar.</li>
+                        <li><b>Extracte de plante (struguri, mere, aronia):</b> Bogate în polifenoli și antocianine, cu proprietăți antioxidante, antiinflamatorii și de suport vascular.</li>
+                    </ul>
+                    <h4>Beneficii principale:</h4>
+                    <ul>
+                        <li>Îmbunătățirea circulației sanguine periferice și centrale.</li>
+                        <li>Creșterea performanței fizice și reducerea oboselii.</li>
+                        <li>Suport pentru sănătatea cardiovasculară și tensiunea arterială.</li>
+                        <li>Oxigenarea optimă a țesuturilor și a creierului.</li>
+                    </ul>
+                    <h4>Angajamentul PM-International:</h4>
+                    <ul>
+                        <li>Companie germană fondată în 1993, cu peste 30 de ani de experiență.</li>
+                        <li>Filozofia "Nutrient Transport Concept" (NTC®) pentru livrare optimă a nutrienților.</li>
+                        <li>Standarde de fabricație GMP și testări riguroase de puritate (ex: TÜV SÜD ELAB, Cologne List®).</li>
+                        <li>Investiții continue în cercetare și dezvoltare.</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="note"><b>Concluzie comparativă:</b> Immune Booster și Munogen sunt ambele suplimente de înaltă calitate, dar cu obiective primare diferite. Immune Booster se concentrează pe **suportul direct al sistemului imunitar**, în timp ce Munogen vizează **optimizarea circulației și a vitalității generale**. Ambele pot contribui la bunăstarea holistică, dar alegerea depinde de nevoile specifice ale fiecărui individ. Un sistem imunitar puternic beneficiază de o circulație bună, iar o circulație bună susține funcția imunitară, indicând o sinergie potențială.</p>
+        </section>
+
+        <footer class="footer-copyright">
+            <p>Copyright: dr.ing. Radu Pascu - 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

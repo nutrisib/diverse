@@ -1,1 +1,274 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparație Immune Booster vs. Munogen - Analiză Exhaustivă</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f8f9fa; /* Light background */
+            color: #212529; /* Dark text */
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        .infographic-container {
+            max-width: 1000px; /* Lățime mărită pentru comparație */
+            width: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        .infographic-header {
+            background-color: #0A2463; /* Dark blue from palette */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .infographic-header:before, .infographic-header:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .infographic-header:before {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent #0A2463 transparent; /* Match header background */
+            bottom: 0;
+            left: 0;
+        }
+        .infographic-header:after {
+            border-width: 20px 20px 0 0;
+            border-color: #0A2463 transparent transparent transparent; /* Match header background */
+            top: 0;
+            right: 0;
+        }
+
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #0A2463; /* Dark blue from palette */
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #3E92CC; /* Medium blue from palette */
+            padding-bottom: 5px;
+            align-self: stretch;
+        }
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+        }
+        .subsection {
+            flex: 1;
+            min-width: 45%; /* Adjusted for two columns */
+            background-color: #ffffff; /* White background for cards */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: transform 0.2s ease; /* Smooth hover effect */
+            border-left: 4px solid #06D6A0; /* Default border color for subsections */
+        }
+        /* Specific border colors for different subsections */
+        .subsection.border-yellow { border-left-color: #F4C150; }
+        .subsection.border-crimson { border-left-color: #D8315B; }
+        .subsection.border-green { border-left-color: #06D6A0; }
+        .subsection.border-blue { border-left-color: #3E92CC; }
+        .subsection.border-darkblue { border-left-color: #0A2463; }
+
+        .subsection:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+        .subsection-title {
+            font-size: 1.3em;
+            color: #0A2463; /* Dark blue for subsection titles */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .subsection p, .subsection ul, .subsection ol {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .subsection ul, .subsection ol {
+            list-style-type: disc; /* Default list style */
+            padding-left: 20px;
+        }
+        .subsection li {
+            margin-bottom: 5px;
+        }
+        .subsection b {
+            color: #212529; /* Darker text for bold */
+        }
+        .note {
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text for notes */
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85em;
+            color: #6c757d; /* Gray text */
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        /* Media queries pentru responsivitate */
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            .subsection {
+                min-width: unset;
+            }
+            .infographic-header {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="infographic-header">
+            Immune Booster vs. Munogen: o analiză comparativă exhaustivă
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Descrierea produselor și obiective principale</h2>
+            <div class="section-content">
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Immune Booster (Herbalife Nutrition)</h3>
+                    <p>Immune Booster de la Herbalife Nutrition este un supliment alimentar formulat specific pentru a oferi un suport concentrat și țintit sistemului imunitar. Obiectivul său principal este de a întări rezistența organismului împotriva infecțiilor și de a menține sănătatea celulară, contribuind la o imunitate robustă și la o stare generală de bine.</p>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Munogen (PM-International AG)</h3>
+                    <p>Munogen de la PM-International AG este un supliment alimentar conceput pentru a sprijini optimizarea circulației sanguine, a vitalității și a performanței fizice. Obiectivul său principal este de a îmbunătăți fluxul sanguin, de a crește livrarea de oxigen și nutrienți către țesuturi și de a susține energia generală a corpului.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Compoziția și știința ingredientelor cheie: o comparație a sinergiilor</h2>
+            <div class="section-content">
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Immune Booster (Herbalife): ingrediente pentru imunitate</h3>
+                    <ul>
+                        <li><b>Vitamina C:</b> Antioxidant puternic, esențial pentru funcția fagocitelor și a limfocitelor, protejează celulele imunitare. <!-- Referință: Mindell, E. (1991). Earl Mindell's Vitamin Bible. Warner Books. --></li>
+                        <li><b>Vitamina D:</b> Hormon imunomodulator, reglează răspunsul imun înnăscut și adaptativ. <!-- Referință: Combs, G. F., & McClung, J. P. (2017). The Vitamins. Academic Press. --></li>
+                        <li><b>Zinc:</b> Mineral crucial pentru dezvoltarea și funcționarea celulelor imunitare (limfocite T, celule NK, macrofage). <!-- Referință: Razzaque, M. S., & Wimalawansa, S. J. (2025). Minerals and Human Health: From Deficiency to Toxicity. Nutrients. --></li>
+                        <li><b>Seleniu:</b> Antioxidant cheie (componentă a glutation peroxidazei), protejează celulele imunitare de stresul oxidativ. <!-- Referință: Razzaque, M. S., & Wimalawansa, S. J. (2025). Minerals and Human Health: From Deficiency to Toxicity. Nutrients. --></li>
+                        <li><b>Extracte de plante (echinacea, soc, beta-glucani):</b> Imunomodulatoare, pot stimula activitatea celulelor imunitare și reduce simptomele răcelilor. <!-- Referință: Longe, J. L. (Ed.). (2005). The Gale Encyclopedia of Alternative Medicine. --></li>
+                    </ul>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Munogen (PM-International): ingrediente pentru circulație și vitalitate</h3>
+                    <ul>
+                        <li><b>L-arginină și L-citrulină:</b> Precursori ai oxidului nitric (NO), un puternic vasodilatator care relaxează vasele de sânge și îmbunătățește fluxul sanguin. <!-- Referință: Stein, R. A., & Oz, M. C. (2004). Complementary and Alternative Cardiovascular Medicine. Humana Press. --></li>
+                        <li><b>Vitamine din complexul B (B6, B9/folat, B12):</b> Cruciale pentru metabolismul homocisteinei (reducerea riscului cardiovascular) și pentru producția de energie. <!-- Referință: Combs, G. F., & McClung, J. P. (2017). The Vitamins. Academic Press. --></li>
+                        <li><b>Vitamina C și vitamina E:</b> Antioxidanți care protejează celulele endoteliale de stresul oxidativ și susțin elasticitatea vaselor de sânge. <!-- Referință: Mindell, E. (1991). Earl Mindell's Vitamin Bible. Warner Books. --></li>
+                        <li><b>Zinc și seleniu:</b> Minerale esențiale cu rol antioxidant și de suport imunitar. <!-- Referință: Razzaque, M. S., & Wimalawansa, S. J. (2025). Minerals and Human Health: From Deficiency to Toxicity. Nutrients. --></li>
+                        <li><b>Extracte de plante (struguri, mere, aronia):</b> Bogate în polifenoli și antocianine, cu proprietăți antioxidante, antiinflamatorii și de suport vascular. <!-- Referință: Moldovan, A. (2014). Super-alimente pentru o Sănătate Super. WWW.STOPCANCERULUI.RO --></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Beneficii fiziologice detaliate: diferențe și complementarități</h2>
+            <div class="section-content">
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Immune Booster (Herbalife): focus pe imunitate</h3>
+                    <ul>
+                        <li><b>Răspuns imun rapid și eficient:</b> Susține fiecare etapă a răspunsului imun, de la recunoașterea patogenilor la eliminarea acestora.</li>
+                        <li><b>Integritatea barierelor protectoare:</b> Contribuie la sănătatea pielii și a mucoaselor, prima linie de apărare.</li>
+                        <li><b>Reducerea inflamației:</b> Modulează răspunsul inflamator, prevenind inflamația excesivă.</li>
+                        <li><b>Energie și recuperare:</b> Prin susținerea funcției imunitare, contribuie la reducerea oboselii asociate cu infecțiile și la o recuperare mai rapidă.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Munogen (PM-International): focus pe circulație și vitalitate</h3>
+                    <ul>
+                        <li><b>Sănătate cardiovasculară și optimizarea circulației:</b> Îmbunătățește fluxul sanguin către toate organele și țesuturile prin vasodilatație și susținerea elasticității vaselor.</li>
+                        <li><b>Reglarea tensiunii arteriale:</b> Contribuie la menținerea unei tensiuni arteriale sănătoase.</li>
+                        <li><b>Energie, vitalitate și performanță fizică:</b> Optimizează producția de ATP și oxigenarea țesuturilor, crescând nivelurile de energie și performanța sportivă.</li>
+                        <li><b>Funcție cognitivă:</b> Asigură o oxigenare și nutriție adecvată a creierului, susținând concentrarea și memoria.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Perspective holistice: impactul asupra echilibrului interior</h2>
+            <div class="section-content">
+                <div class="subsection border-green">
+                    <h3 class="subsection-title">Immune Booster (Herbalife): reziliență și protecție</h3>
+                    <ul>
+                        <li><b>Scutul energetic:</b> Fortificarea sistemului imunitar fizic se traduce printr-un câmp energetic (aură) robust, un scut protector împotriva influențelor negative externe (emoții toxice, energii joase).</li>
+                        <li><b>Stabilirea granițelor:</b> Reflectă capacitatea de a-ți stabili și menține granițe clare în relații și în fața cerințelor externe, fără a te simți copleșit energetic.</li>
+                        <li><b>Autoapărare:</b> Simbolizează abilitatea de a te apăra de "atacurile" emoționale sau psihologice, de a-ți proteja spațiul personal.</li>
+                        <li><b>Capacitatea de recuperare:</b> Abilitatea de a te reface rapid după șocuri emoționale sau perioade de stres intens.</li>
+                    </ul>
+                </div>
+                <div class="subsection border-darkblue">
+                    <h3 class="subsection-title">Munogen (PM-International): flux energetic și claritate</h3>
+                    <ul>
+                        <li><b>Fluxul energetic neîngrădit:</b> O circulație sanguină optimă la nivel fizic se traduce printr-un flux energetic liber în corpul subtil. Poate facilita deblocarea stagnărilor emoționale.</li>
+                        <li><b>Eliberarea tensiunilor:</b> Îmbunătățirea fluxului sanguin contribuie la eliberarea tensiunilor fizice și emoționale acumulate.</li>
+                        <li><b>Renunțarea la control:</b> O circulație sănătoasă implică o relaxare a vaselor, încurajând renunțarea la controlul excesiv și la rigiditatea mentală.</li>
+                        <li><b>Vitalitatea interioară și curajul:</b> O oxigenare și nutriție celulară îmbunătățită se traduce printr-o creștere a vitalității la nivel subtil, conferind curajul de a acționa și de a te manifesta autentic.</li>
+                        <li><b>Claritate mentală și discernământ:</b> Îmbunătățirea circulației cerebrale poate reduce "ceața mentală", îmbunătățind concentrarea și capacitatea de a discerne adevărul.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Concluzie: sinergia pentru o sănătate holistică optimă</h2>
+            <div class="section-content">
+                <div class="subsection">
+                    <p>Immune Booster și Munogen sunt suplimente de înaltă calitate, fiecare cu un profil de ingrediente și obiective primare distincte, dar complementare. Immune Booster se concentrează pe fortificarea sistemului imunitar, esențial pentru protecția organismului, în timp ce Munogen vizează optimizarea circulației și a vitalității generale, fundamentale pentru livrarea de nutrienți și energie la nivel celular. Ambele produse, susținute de angajamentul producătorilor lor față de știință și calitate (Herbalife Nutrition și PM-International AG), pot fi integrate într-o abordare holistică a sănătății. Un sistem imunitar puternic beneficiază de o circulație optimă, iar o circulație eficientă susține funcția imunitară, indicând o sinergie potențială pentru bunăstarea generală în programul ReDefine.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-copyright">
+            <p>Copyright: dr.ing. Radu Pascu - 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

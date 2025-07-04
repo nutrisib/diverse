@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interacțiunea Dintre Emoții și Crizele Epileptice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: Am proiectat aplicația folosind o structură de navigare cu tab-uri pentru a segmenta informația densă a raportului în secțiuni tematice digerabile. Această abordare non-lineară îmbunătățește utilizabilitatea, permițând utilizatorilor să exploreze subiecte specifice de interes (ex: "Ce este Epilepsia?", "Epilepsie vs. CNP", "Strategii") fără a fi nevoiți să parcurgă un document lung. Fluxul utilizatorului este ghidat de la concepte fundamentale la subiecte aplicate, cum ar fi strategiile de management, facilitând o înțelegere progresivă. Această structură este superioară unui format de raport liniar, deoarece încurajează explorarea activă și reduce încărcătura cognitivă. -->
+    <!-- Visualization & Content Choices: 
+        - Raport Info: ~50% din cauzele epilepsiei sunt necunoscute. -> Goal: Informare rapidă. -> Viz/Prezentare: Diagramă circulară (Doughnut Chart). -> Interacțiune: Tooltip la hover. -> Justificare: Vizualizează rapid proporția majoră, având un impact vizual imediat. -> Library/Method: Chart.js.
+        - Raport Info: Comparația dintre crizele epileptice și CNP. -> Goal: Comparare clară. -> Viz/Prezentare: Tabel structurat cu două coloane. -> Interacțiune: Text evidențiat. -> Justificare: Permite o comparație directă și rapidă a caracteristicilor cheie. -> Library/Method: HTML/Tailwind.
+        - Raport Info: 20-30% dintre pacienții trimiși la centrele de epilepsie sunt diagnosticați cu CNP. -> Goal: Evidențierea problemei de diagnosticare. -> Viz/Prezentare: Diagramă cu bare (Bar Chart). -> Interacțiune: Tooltip la hover. -> Justificare: Ilustrează scala problemei de diagnosticare greșită într-un mod cantitativ și ușor de înțeles. -> Library/Method: Chart.js.
+        - Raport Info: Relația ciclică între stres, somn, crize și dispoziție. -> Goal: Explicarea unui concept complex. -> Viz/Prezentare: Diagramă de flux vizuală. -> Interacțiune: Icoane și text animate subtil la hover. -> Justificare: Simplifică un proces complex, făcând relația de tip "ciclu vicios" intuitivă. -> Library/Method: HTML/CSS/Tailwind.
+        - Raport Info: Strategii de management. -> Goal: Organizarea informației acționabile. -> Viz/Prezentare: Listă de tip acordeon. -> Interacțiune: Click pentru a extinde/restrânge. -> Justificare: Prezintă o cantitate mare de informații într-un format compact, permițând utilizatorului să se concentreze pe o singură strategie la un moment dat. -> Library/Method: HTML/JS/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { 
+            border-color: #4f46e5; 
+            color: #4f46e5;
+            background-color: #eef2ff;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #4b5563;
+        }
+        .section-active { display: block; }
+        .section-inactive { display: none; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-700">Emoțiile și Crizele Epileptice</h1>
+            <p class="mt-2 text-lg text-slate-600">O explorare interactivă a relației complexe dintre stările emoționale și epilepsie.</p>
+        </header>
+
+        <nav class="mb-8 border-b border-slate-200">
+            <ul class="flex flex-wrap -mb-px justify-center text-sm font-medium text-center">
+                <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-active" data-tab="intro">Introducere</button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="basics">Ce Este Epilepsia?</button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="emotions">Emoții & Crize</button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="pnes">Epilepsie vs. CNP</button>
+                </li>
+                 <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="cycle">Impact Bidirecțional</button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-btn inline-block p-4 border-b-2 rounded-t-lg tab-inactive" data-tab="strategies">Strategii</button>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="intro" class="content-section section-active bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Pot emoțiile puternice să declanșeze o criză epileptică?</h2>
+                <p class="text-slate-600 mb-4">Răspunsul este complex și nuanțat: **Da, este posibil.** Relația dintre emoții și epilepsie este profundă și multifactorială. Emoțiile, atât cele pozitive, cât și cele negative, pot influența activitatea cerebrală în mai multe moduri distincte.</p>
+                <div class="grid md:grid-cols-3 gap-6 mt-6 text-center">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-indigo-800">1. Factori Declanșatori</h3>
+                        <p class="text-sm text-indigo-700 mt-1">Stresul emoțional este cel mai frecvent raportat declanșator, scăzând pragul convulsivant al creierului.</p>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-teal-800">2. Simptome (Aure)</h3>
+                        <p class="text-sm text-teal-700 mt-1">Sentimentele bruște și inexplicabile de frică, bucurie sau tristețe pot fi, de fapt, începutul unei crize.</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-amber-800">3. Cauze Directe (Rare)</h3>
+                        <p class="text-sm text-amber-700 mt-1">În cazuri rare de epilepsii reflexe, emoții specifice (chiar și fericirea) pot provoca direct și constant o criză.</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-slate-600">Această aplicație explorează aceste mecanisme, distincția vitală față de crizele non-epileptice și strategiile pe care le puteți adopta pentru a gestiona bunăstarea emoțională și a reduce riscul de crize. Folosiți navigarea de mai sus pentru a explora fiecare secțiune.</p>
+            </section>
+            
+            <section id="basics" class="content-section section-inactive bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                 <h2 class="text-2xl font-bold text-slate-800 mb-4">Înțelegerea Fundamentelor Epilepsiei</h2>
+                <p class="text-slate-600 mb-6">Epilepsia este o afecțiune neurologică cronică definită printr-o predispoziție a creierului de a genera crize recurente. O criză este o "furtună electrică" temporară, cauzată de activitate neuronală anormală. Este esențial să distingem între cauzele care duc la dezvoltarea epilepsiei și factorii care pot declanșa o criză individuală.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2 text-indigo-700">Cauze vs. Factori Declanșatori</h3>
+                        <div class="flex flex-col space-y-4">
+                            <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold">Cauze ale Epilepsiei</h4>
+                                <p class="text-sm text-slate-600 mt-1">Condiții care duc la dezvoltarea bolii.</p>
+                                <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                                    <li>Leziuni cerebrale (traumatisme, AVC)</li>
+                                    <li>Influențe genetice</li>
+                                    <li>Infecții cerebrale (meningită)</li>
+                                    <li>Anomalii structurale congenitale</li>
+                                </ul>
+                            </div>
+                             <div class="p-4 bg-slate-100 rounded-lg">
+                                <h4 class="font-bold">Factori Declanșatori ai Crizelor</h4>
+                                <p class="text-sm text-slate-600 mt-1">Elemente care pot provoca o criză la o persoană cu epilepsie.</p>
+                                <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                                    <li>Stresul și oboseala</li>
+                                    <li>Lipsa somnului</li>
+                                    <li>Omiterea medicației</li>
+                                    <li>Lumini intermitente (fotosensibilitate)</li>
+                                    <li>Febră, modificări hormonale</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                         <h3 class="font-semibold text-lg mb-2 text-center text-indigo-700">Originea Epilepsiei</h3>
+                         <div class="chart-container">
+                             <canvas id="causesChart"></canvas>
+                         </div>
+                         <p class="text-center text-sm text-slate-500 mt-2">Diagrama ilustrează că, în ciuda progreselor, cauza fundamentală a epilepsiei rămâne necunoscută în aproximativ jumătate din cazuri la nivel global.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="emotions" class="content-section section-inactive bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Rolul Multifacetic al Emoțiilor în Crize</h2>
+                <p class="text-slate-600 mb-6">Emoțiile nu sunt doar simple trăiri; ele pot interacționa cu creierul epileptic în moduri profunde și variate. Înțelegerea acestor roluri este cheia pentru o mai bună gestionare a condiției.</p>
+                <div class="space-y-6">
+                    <div class="p-6 rounded-lg border border-slate-200 bg-slate-50">
+                        <h3 class="text-xl font-semibold text-indigo-700">1. Stresul Emoțional ca Declanșator General</h3>
+                        <p class="mt-2 text-slate-600">Stresul este cel mai frecvent declanșator. Eliberarea de hormoni precum cortizolul poate crește excitabilitatea creierului, scăzând "pragul convulsivant" și făcând o criză mai probabilă. Acest lucru se aplică atât emoțiilor negative (frică, furie, îngrijorare), cât și stresului cauzat de evenimente pozitive, dar intense.</p>
+                    </div>
+                    <div class="p-6 rounded-lg border border-slate-200 bg-slate-50">
+                        <h3 class="text-xl font-semibold text-teal-700">2. Emoțiile ca Simptome sau Aure</h3>
+                        <p class="mt-2 text-slate-600">În special în epilepsia de lob temporal (zonă cerebrală cheie pentru emoții), o criză poate începe cu o aură emoțională. Persoana poate experimenta brusc și fără un motiv extern: </p>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                           <li>Un sentiment intens de frică sau anxietate.</li>
+                           <li>O bucurie sau euforie inexplicabilă.</li>
+                           <li>Sentimentul familiar de "déjà vu".</li>
+                           <li>O senzație de "gol în stomac".</li>
+                        </ul>
+                         <p class="mt-2 text-slate-600">Acestea nu sunt reacții la un eveniment, ci manifestarea directă a activității electrice anormale din creier.</p>
+                    </div>
+                    <div class="p-6 rounded-lg border border-slate-200 bg-slate-50">
+                        <h3 class="text-xl font-semibold text-amber-700">3. Emoțiile ca Declanșatori Direcți (Epilepsii Reflexe)</h3>
+                        <p class="mt-2 text-slate-600">Aceasta este o categorie rară (4-7% din cazuri), unde crizele sunt provocate în mod constant și previzibil de un stimul specific. În acest context, emoțiile pot fi stimulul:</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                           <li><span class="font-semibold">Crizele extatice:</span> O aură de beatitudine sau fericire intensă poate fi ea însăși o criză sau poate fi declanșată de emoții pozitive.</li>
+                           <li><span class="font-semibold">Epilepsia muzicogenă:</span> Conținutul emoțional al unei melodii poate declanșa o criză.</li>
+                           <li><span class="font-semibold">Alte cazuri:</span> Au fost raportate crize declanșate de râs, anxietatea de a minți sau chiar de procese cognitive complexe precum luarea deciziilor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="pnes" class="content-section section-inactive bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Distincția Crucială: Crize Epileptice vs. Crize Nonepileptice Psihogene (CNP)</h2>
+                <p class="text-slate-600 mb-6">O provocare majoră în diagnostic este diferențierea crizelor epileptice de CNP (cunoscute și ca crize funcționale). Deși pot arăta similar, originea și tratamentul lor sunt fundamental diferite. Diagnosticul greșit este comun și poate duce la tratamente ineficiente și suferință prelungită.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-center mb-2 text-indigo-700">Problemă de Diagnostic</h3>
+                        <div class="chart-container">
+                            <canvas id="pnesChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-slate-500 mt-2">Studiile indică faptul că până la 20-30% dintre pacienții evaluați în centre specializate pentru crize necontrolate sunt în final diagnosticați cu CNP.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2 text-indigo-700">Tabel Comparativ</h3>
+                        <div class="border rounded-lg overflow-hidden">
+                            <table class="w-full text-sm text-left">
+                                <thead class="bg-slate-100 text-slate-700">
+                                    <tr>
+                                        <th class="p-3">Caracteristică</th>
+                                        <th class="p-3">Crize Epileptice</th>
+                                        <th class="p-3">Crize Nonepileptice (CNP)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-t">
+                                        <td class="p-3 font-semibold">Origine</td>
+                                        <td class="p-3">Neurologică</td>
+                                        <td class="p-3">Psihologică / Stres / Traumă</td>
+                                    </tr>
+                                    <tr class="border-t bg-slate-50">
+                                        <td class="p-3 font-semibold">Mecanism</td>
+                                        <td class="p-3">Descărcări electrice anormale în creier</td>
+                                        <td class="p-3">Manifestare fizică a suferinței psihologice</td>
+                                    </tr>
+                                    <tr class="border-t">
+                                        <td class="p-3 font-semibold">EEG în timpul crizei</td>
+                                        <td class="p-3 text-red-600 font-bold">Anormală</td>
+                                        <td class="p-3 text-green-600 font-bold">Normală</td>
+                                    </tr>
+                                    <tr class="border-t bg-slate-50">
+                                        <td class="p-3 font-semibold">Tratament</td>
+                                        <td class="p-3">Medicație anticonvulsivantă</td>
+                                        <td class="p-3">Psihoterapie (ex: TCC), managementul stresului</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                         <p class="text-sm text-slate-500 mt-2">Diagnosticul definitiv se face prin monitorizare Video-EEG, care înregistrează simultan comportamentul și activitatea cerebrală.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="cycle" class="content-section section-inactive bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Impactul Bidirecțional: Un Ciclu Vicios</h2>
+                <p class="text-slate-600 mb-6">Relația dintre epilepsie și sănătatea emoțională este o stradă cu două sensuri. Nu doar că emoțiile pot influența crizele, dar a trăi cu epilepsie are un impact profund asupra bunăstării emoționale, creând adesea un ciclu care se auto-perpetuează.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2 text-indigo-700">Ciclul Stres-Crize</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-3 bg-slate-100 rounded-lg">
+                                <span class="text-2xl mr-4">🧠</span>
+                                <div>
+                                    <h4 class="font-semibold">Stres, Anxietate, Depresie</h4>
+                                    <p class="text-sm text-slate-600">Factorii psihosociali (stigmă, frica de crize) și cei neurobiologici cresc riscul de tulburări de dispoziție.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center"><span class="text-2xl transform rotate-90">➡️</span></div>
+                            <div class="flex items-center p-3 bg-slate-100 rounded-lg">
+                                <span class="text-2xl mr-4">😴</span>
+                                <div>
+                                    <h4 class="font-semibold">Calitate Scăzută a Somnului</h4>
+                                    <p class="text-sm text-slate-600">Stresul și anxietatea duc adesea la insomnie sau somn agitat, un declanșator major al crizelor.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center"><span class="text-2xl transform rotate-90">➡️</span></div>
+                            <div class="flex items-center p-3 bg-slate-100 rounded-lg">
+                                <span class="text-2xl mr-4">⚡️</span>
+                                <div>
+                                    <h4 class="font-semibold">Frecvență Crescută a Crizelor</h4>
+                                    <p class="text-sm text-slate-600">Pragul convulsivant scade, ducând la mai multe crize, ceea ce, la rândul său, agravează stresul și anxietatea.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="font-semibold text-lg mb-2 text-center text-indigo-700">Prevalența Comorbidităților Psihiatrice</h3>
+                        <div class="chart-container">
+                             <canvas id="comorbidityChart"></canvas>
+                         </div>
+                         <p class="text-center text-sm text-slate-500 mt-2">Persoanele cu epilepsie au un risc semnificativ mai mare de a dezvolta afecțiuni precum depresia și anxietatea. Abordarea acestora este la fel de importantă ca tratamentul crizelor.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="strategies" class="content-section section-inactive bg-white p-6 md:p-8 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Strategii de Management pentru Bunăstarea Emoțională</h2>
+                <p class="text-slate-600 mb-6">Gestionarea eficientă a epilepsiei merge dincolo de medicație. Adoptarea unor strategii proactive pentru sănătatea emoțională poate reduce frecvența crizelor și poate îmbunătăți considerabil calitatea vieții. Aceasta este o abordare holistică în care pacientul joacă un rol activ.</p>
+                <div id="accordion-container" class="space-y-3">
+                    <div class="accordion-item border border-slate-200 rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 bg-slate-100 hover:bg-slate-200 transition">
+                            <span class="font-semibold text-lg text-indigo-700">1. Identifică-ți Declanșatorii</span>
+                            <span class="accordion-icon text-indigo-700 font-bold text-xl">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 text-slate-600">
+                                <p>Menținerea unui jurnal al crizelor este esențială. Notează data, ora, ce făceai, cum te simțeai emoțional și ce mâncasei înainte de o criză. Acest lucru te poate ajuta să identifici tipare și declanșatori specifici pentru tine, inclusiv pe cei emoționali.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item border border-slate-200 rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 bg-slate-100 hover:bg-slate-200 transition">
+                            <span class="font-semibold text-lg text-indigo-700">2. Tehnici de Gestionare a Stresului</span>
+                             <span class="accordion-icon text-indigo-700 font-bold text-xl">+</span>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="p-4 text-slate-600">
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Terapie și consiliere:</strong> Terapia Cognitiv-Comportamentală (TCC) este foarte eficientă.</li>
+                                    <li><strong>Practici de relaxare:</strong> Încearcă meditația, yoga, tai chi sau exerciții de respirație profundă.</li>
+                                    <li><strong>Activitate fizică regulată:</strong> Ajută la eliberarea tensiunii și îmbunătățește starea de spirit.</li>
+                                    <li><strong>Gestionarea situațiilor:</strong> Evită situațiile foarte stresante când este posibil sau dezvoltă mecanisme de adaptare.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item border border-slate-200 rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 bg-slate-100 hover:bg-slate-200 transition">
+                            <span class="font-semibold text-lg text-indigo-700">3. Prioritizează Somnul</span>
+                             <span class="accordion-icon text-indigo-700 font-bold text-xl">+</span>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="p-4 text-slate-600">
+                                <p>Privarea de somn este unul dintre cei mai puternici declanșatori. Stabilește o rutină regulată de somn, țintind 7-9 ore pe noapte. Creează un mediu relaxant în dormitor, fără ecrane înainte de culcare.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item border border-slate-200 rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 bg-slate-100 hover:bg-slate-200 transition">
+                            <span class="font-semibold text-lg text-indigo-700">4. Aderența la Tratament și Comunicare</span>
+                             <span class="accordion-icon text-indigo-700 font-bold text-xl">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 text-slate-600">
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Medicația:</strong> Ia-ți medicamentele exact așa cum au fost prescrise. Omiterea dozelor este o cauză majoră a creșterii frecvenței crizelor.</li>
+                                    <li><strong>Comunicare deschisă:</strong> Vorbește cu echipa ta medicală despre orice schimbare de dispoziție, nivel de stres sau medicamente noi pe care le iei.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item border border-slate-200 rounded-lg">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 bg-slate-100 hover:bg-slate-200 transition">
+                            <span class="font-semibold text-lg text-indigo-700">5. Caută Sprijin</span>
+                             <span class="accordion-icon text-indigo-700 font-bold text-xl">+</span>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="p-4 text-slate-600">
+                                <p>Nu trebuie să treci prin asta singur. Grupurile de suport pentru epilepsie (online sau locale) pot oferi un sentiment de comunitate și înțelegere. Discută cu medicul tău despre opțiunile de tratament pentru anxietate sau depresie, dacă este cazul.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.content-section');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+
+                tabs.forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('tab-inactive');
+                });
+                tab.classList.add('tab-active');
+                tab.classList.remove('tab-inactive');
+                
+                sections.forEach(section => {
+                    if (section.id === target) {
+                        section.classList.remove('section-inactive');
+                        section.classList.add('section-active');
+                    } else {
+                        section.classList.remove('section-active');
+                        section.classList.add('section-inactive');
+                    }
+                });
+            });
+        });
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const icon = item.querySelector('.accordion-icon');
+
+            header.addEventListener('click', () => {
+                const isExpanded = content.style.maxHeight !== '0px';
+
+                accordionItems.forEach(otherItem => {
+                    otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                    otherItem.querySelector('.accordion-icon').textContent = '+';
+                });
+                
+                if (!isExpanded) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.textContent = '-';
+                }
+            });
+        });
+
+        const initCharts = () => {
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: 'Inter',
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        bodyFont: {
+                           family: 'Inter'
+                        },
+                        titleFont: {
+                           family: 'Inter'
+                        }
+                    }
+                }
+            };
+            
+            const causesCtx = document.getElementById('causesChart');
+            if(causesCtx) {
+                new Chart(causesCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Cauze Necunoscute', 'Cauze Cunoscute (Structurale, Genetice, etc.)'],
+                        datasets: [{
+                            label: 'Originea Epilepsiei',
+                            data: [50, 50],
+                            backgroundColor: ['#64748b', '#6366f1'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            const pnesCtx = document.getElementById('pnesChart');
+            if(pnesCtx) {
+                new Chart(pnesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Pacienți cu CNP'],
+                        datasets: [{
+                            label: 'Procentul de diagnostice CNP în centre de epilepsie (%)',
+                            data: [25],
+                            backgroundColor: ['#ef4444'],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...chartOptions, scales: { y: { beginAtZero: true, max: 40 } } }
+                });
+            }
+            
+            const comorbidityCtx = document.getElementById('comorbidityChart');
+            if(comorbidityCtx) {
+                 new Chart(comorbidityCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Prevalența depresiei în epilepsie'],
+                        datasets: [{
+                            label: 'Procentul estimat (%)',
+                            data: [40], // Using an average value between 25-50% for visualization
+                            backgroundColor: ['#f59e0b'],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...chartOptions, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 60 } } }
+                });
+            }
+        };
+        
+        window.onload = initCharts;
+    </script>
+</body>
+</html>

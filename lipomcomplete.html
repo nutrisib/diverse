@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lipomul: O Abordare Integrativă - De la Cauze la Plan Terapeutic</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Stiluri comune - AM PĂSTRAT ȘI INTEGRAT STILURILE DVS. */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+        .infographic-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        .infographic-header {
+            background-color: #0A2463;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .infographic-header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            margin: 0 0 10px 0;
+        }
+        .infographic-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #0A2463;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #3E92CC;
+            padding-bottom: 10px;
+        }
+        .section-subtitle {
+             font-size: 1.4em;
+             font-weight: 600;
+             color: #1e4a8a;
+             margin-top: 25px;
+             margin-bottom: 20px;
+        }
+        
+        .section-content, .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+        }
+        .info-card {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .info-card h3 {
+            font-size: 1.3em;
+            color: #0A2463;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .info-card ul {
+            list-style-type: none;
+            padding-left: 5px;
+            font-size: 0.95em;
+            color: #475569;
+        }
+        .info-card li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .info-card li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3E92CC;
+            font-weight: bold;
+        }
+        .info-card p {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .info-card.border-blue { border-left-color: #3E92CC; }
+        .info-card.border-green { border-left-color: #06D6A0; }
+        .info-card.border-crimson { border-left-color: #D8315B; }
+        .info-card.border-yellow { border-left-color: #F4C150; }
+
+        /* STILURI NOI INTEGRATE PENTRU PLANUL DE NUTRIȚIE */
+        .nutrition-columns {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+        .column {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .column h3 {
+            font-size: 1.3em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+            margin-bottom: 15px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .column-start h3 { color: #27ae60; border-color: #27ae60; }
+        .column-stop h3 { color: #e74c3c; border-color: #e74c3c; }
+        .column ul { list-style-type: none; padding: 0; }
+        .column li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+            color: #475569;
+        }
+        .column li span {
+            font-size: 1.5em;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        /* -- END STILURI NOI -- */
+
+        .disclaimer {
+            font-size: 0.95em;
+            color: #D8315B;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #D8315B;
+            border-radius: 10px;
+            background-color: #fff5f5;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85em;
+            color: #6c757d;
+            background-color: #f8f9fa;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section { padding: 20px; }
+            .section-content, .grid-container, .nutrition-columns {
+                flex-direction: column;
+            }
+            .info-card { min-width: unset; }
+            .infographic-header h1 { font-size: 1.8em; }
+            .section-title { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="infographic-header">
+            <h1>Lipomul: O Abordare Integrativă</h1>
+            <p>De la Cauze Emoționale și Fizice la Plan Terapeutic Complet</p>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Partea I: Ce este și de ce apare? (Analiza Fizică)</h2>
+            <div class="section-content">
+                <div class="info-card border-blue">
+                    <h3>Ce este un lipom?</h3>
+                    <p>O tumoră benignă (necanceroasă) din țesut adipos (grăsime). De obicei, este o masă moale, mobilă, nedureroasă, situată chiar sub piele.</p>

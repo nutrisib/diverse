@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+Raport Tehnic de Unificare și Optimizare a Componentelor WebPartea I: Brief Tehnic de Implementare1. Introducere și Analiză Tehnică Comparativă1.1. Obiective și Prezentare Generală a StrategieiAcest raport documentează procesul tehnic de unificare a două fișiere HTML distincte, denumite în continuare Fișierul 1 și Fișierul 2, într-o singură pagină web coerentă și funcțională. Obiectivul principal este fuziunea funcționalității de navigare prin tab-uri, specifică Fișierului 2, cu identitatea vizuală și estetica superioară a containerelor și componentelor din Fișierului 1.Strategia de implementare adoptată se bazează pe utilizarea Fișierului 1 ca schelet arhitectural și stilistic. Peste această fundație solidă, vor fi injectate și adaptate chirurgical elementele structurale și funcționale din Fișierul 2. Acest proces va asigura păstrarea integrală a conținutului informativ din ambele surse, conform cerinței, și va produce o versiune de bază, pregătită pentru o etapă ulterioară de optimizare.1.2. Analiza Structurală a Codului HTMLO analiză detaliată a structurii celor două fișiere a fost esențială pentru a defini calea optimă de integrare.Analiza Fișierului 1: Structura sa este robustă și semantică, utilizând tag-uri <section> pentru a delimita logic blocurile de conținut. Containerul principal, .infographic-container, împreună cu stilizarea elementului <body> folosind display: flex, oferă o bază excelentă pentru centrarea verticală și orizontală a conținutului. Informațiile sunt organizate modular în carduri (.info-card), o practică modernă care facilitează lizibilitatea și mentenanța.Analiza Fișierului 2: Structura acestui fișier este orientată spre funcționalitate. Elementul central este componenta de navigare prin tab-uri, compusă dintr-un element <nav class="tabs"> pentru butoanele de control și containere div cu ID-uri corespondente (#plan, #avertisment) pentru panourile de conținut (.tab-content). Funcționarea acestei structuri este dependentă de scriptul JavaScript inclus la finalul documentului.Calea de integrare cea mai eficientă, derivată din această analiză, este păstrarea structurii generale <body> -> .infographic-container din Fișierul 1 și inserarea, în interiorul acesteia, a elementelor <nav class="tabs"> și <div class="tab-content-container"> din Fișierul 2. Ulterior, conținutul informativ din ambele fișiere va fi reorganizat și distribuit în panourile de tab-uri nou create.1.3. Analiza Stilurilor CSS și Identificarea ConflictelorFuziunea stilurilor reprezintă cea mai complexă provocare tehnică a acestui proiect. O hartă detaliată a conflictelor și a deciziilor de stil a fost elaborată pentru a ghida procesul.Tipografie: S-a identificat o discrepanță fundamentală: Fișierul 1 utilizează fontul 'Inter', în timp ce Fișierul 2 folosește 'Roboto'. Conform cerinței de a păstra estetica Fișierului 1, s-a decis standardizarea întregii pagini pe fontul 'Inter'. În consecință, directiva @import pentru 'Roboto' va fi eliminată din codul final.Paleta de Culori:Fișierul 1 (Paleta de Bază): Definește o identitate vizuală clară prin utilizarea unui albastru închis (#0A2463) pentru elementele principale, un albastru mediu de accent (#3E92CC), și culori vibrante pentru evidențiere: verde (#06D6A0), roșu-aprins (#D8315B) și galben (#F4C150).Fișierul 2 (Paleta de Adaptat): Utilizează o paletă bazată pe nuanțe de turcoaz/teal (#008080, #005f5f), griuri deschise (#eef2f1) și un roșu de avertizare distinct (#c0392b).Planul de Acțiune Cromatică: Pentru a asigura coerența vizuală, culorile din stilurile migrate din Fișierul 2 vor fi înlocuite sistematic cu echivalentele lor din paleta Fișierului 1. De exemplu, culoarea de accent pentru tab-ul activ, #008080, va fi înlocuită cu #0A2463 sau #3E92CC, iar roșul de avertizare, #c0392b, va fi înlocuit cu #D8315B.Componente Cheie și Conflicte de Clase:Container Principal: Clasa .infographic-container din Fișierul 1 este superioară din punct de vedere estetic, având margini rotunjite mai pronunțate și o umbră mai complexă. Aceasta va fi păstrată ca element principal de încadrare a paginii.Carduri de Informații: S-a identificat un conflict direct între clasele .info-card (Fișierul 1) și .card (Fișierul 2). Stilul .info-card este mai elaborat, incluzând o margine colorată la stânga pentru categorisire vizuală și un efect hover subtil. Decizia a fost de a refactoriza HTML-ul din Fișierul 2, înlocuind toate instanțele clasei .card cu .info-card și adăugând clasele de bordură corespunzătoare (ex: .border-blue). Această abordare este superioară suprascrierii stilurilor, rezultând un CSS mai curat și mai predictibil.Secțiuni: Ambele fișiere utilizează clasa .section. Stilul din Fișierul 1 este mai detaliat, cu un padding mai generos și un titlu (.section-title) bine definit. Acesta va fi adoptat ca standard pentru toate secțiunile din pagina unificată.JavaScript: Scriptul din Fișierul 2, responsabil pentru funcționalitatea tab-urilor, este autonom și bine implementat. Se bazează pe atribute data-tab și ID-uri de elemente, o practică standard care nu anticipează conflicte de integrare.2. Strategia Detaliată de Unificare și Integrare2.1. Construcția Scheletului HTML FinalProcesul de construcție a structurii HTML unificate urmează o serie de pași logici și preciși:Preluarea Bazei: Se utilizează codul complet al Fișierului 1 ca punct de plecare, de la <!DOCTYPE> până la </html>.Curățarea Conținutului: Conținutul din interiorul containerului .infographic-container este golit temporar, păstrându-se doar antetul (.infographic-header) și subsolul (.footer-copyright), care vor încadra noua structură.Injectarea Structurii de Tab-uri: Elementele <nav class="tabs"> și <div class="tab-content-container"> din Fișierul 2 sunt inserate imediat după .infographic-header.Popularea Tab-urilor: Se creează panourile de conținut (<div class="tab-content">) și se distribuie informația din ambele fișiere sursă, după cum urmează:Tab 1: "Analiză Holistică": Va găzdui secțiunile "Perspectiva fizică" și "Perspectiva holistică" din Fișierul 1.Tab 2: "Plan Terapeutic": Va conține toate secțiunile din panoul #plan al Fișierului 2. HTML-ul acestor secțiuni va fi refactorizat pentru a utiliza clasele .info-card și .section-title pentru consistență vizuală.Tab 3: "Calea spre Echilibru": Va include secțiunea "Calea spre echilibru" din Fișierul 1.Tab 4: "Avertisment Medical": Va centraliza informațiile critice de siguranță prin fuzionarea conținutului din .disclaimer (Fișierul 1) și .warning-section (Fișierul 2) într-un singur panou dedicat.2.2. Fuziunea și Refactorizarea CSSProcesul de unificare a stilurilor este critic pentru obținerea unei identități vizuale unitare.Stabilirea Bazei de Stil: Întregul bloc <style> din Fișierul 1 este păstrat ca bază stilistică a proiectului.Migrarea Stilurilor Funcționale: Regulile CSS esențiale pentru funcționarea tab-urilor sunt copiate selectiv din Fișierul 2. Acestea includ: .tabs, .tab-link, stările :hover și .active, .tab-content, .tab-content.active, și animația @keyframes fadeIn.Adaptarea Cromatică: Regulile migrate sunt modificate pentru a se alinia la paleta de culori a Fișierului 1. De exemplu:Stilul pentru tab-ul activ devine: .tab-link.active { color: #0A2463; border-bottom: 3px solid #3E92CC; }Stilul pentru tab-ul de avertizare devine: .tab-link.warning.active { color: #D8315B; border-bottom: 3px solid #D8315B; }Standardizarea Componentelor: Se elimină regulile redundante din CSS-ul migrat și se asigură aplicarea consecventă a stilurilor de bază (definite în Fișierul 1) pentru toate elementele similare (titluri, paragrafe, liste etc.).2.3. Integrarea Funcționalității JavaScriptBlocul <script> de la finalul Fișierului 2 este copiat integral și plasat în fișierul unificat, imediat înainte de închiderea tag-ului </body>. Se va verifica cu atenție corespondența dintre atributele data-tab ale butoanelor și id-urile panourilor de conținut (.tab-content) definite în noua structură HTML pentru a garanta funcționalitatea corectă.2.4. Tabel de Mapare a Deciziilor de IntegrarePentru a oferi o imagine de ansamblu clară și o documentație tehnică precisă a procesului de unificare, a fost creat următorul tabel de mapare. Acesta urmărește fiecare componentă majoră, justificând deciziile luate și asigurând transparența implementării.Element/ComponentăSursa (Fișier 1 / Fișier 2)Clasa/ID OriginalAcțiune în Versiunea UnificatăJustificare TehnicăContainer PrincipalFișier 1.infographic-containerPăstrat integralDefinește estetica generală conform cerinței.Antet PrincipalFișier 1.infographic-headerPăstrat integralPăstrează titlul principal și stilul vizual dominant.Navigație Tab-uriFișier 2.tabs, .tab-linkIntegrată și adaptată cromaticImplementează funcționalitatea de navigare cerută.Panou TabFișier 2.tab-contentPăstrat ca structurăContainer necesar pentru funcționalitatea JS a tab-urilor.Card de InformațiiFișier 1 / Fișier 2.info-card / .cardStandardizat pe stilul .info-cardAsigură un design unitar și superior pentru toate cardurile.Titlu SecțiuneFișier 1 / Fișier 2.section-title / h2Standardizat pe stilul .section-titleConsistență vizuală pentru toate titlurile de secțiune.FonturiFișier 1 / Fișier 2'Inter' / 'Roboto'Standardizat pe 'Inter'Respectă cerința de a folosi stilul din Fișierul 1.AvertismentFișier 1 / Fișier 2.disclaimer / .warning-sectionConținutul fuzionat într-un singur tabCentralizează informațiile critice de siguranță.Script JSFișier 2scriptCopiat integralFuncționalitate autonomă, fără conflicte anticipate.3. Recomandări pentru Optimizare (Etapa Următoare)Versiunea unificată reprezintă o fundație solidă, dar există oportunități semnificative de optimizare care pot transforma acest produs într-unul de nivel profesional. Următoarele recomandări sunt propuse pentru o etapă viitoare.3.1. Arhitectură și Mentenabilitate CSSExternalizarea CSS: În prezent, toate stilurile sunt definite într-un bloc <style> în interiorul fișierului HTML. Mutarea acestui cod într-un fișier extern (ex: style.css) este o practică standard care aduce beneficii multiple: separarea clară a structurii (HTML) de prezentare (CSS), îmbunătățirea organizării codului și permiterea browser-ului să cache-eze fișierul de stiluri, accelerând încărcările ulterioare ale paginii.Implementarea Variabilelor CSS (Custom Properties): O optimizare cu impact major este refactorizarea codului pentru a utiliza variabile CSS. Paleta de culori, familiile de fonturi, valorile de spațiere și razele de colț pot fi definite centralizat.Exemplu de implementare:CSS:root {
+  --color-primary: #0A2463;
+  --color-accent: #3E92CC;
+  --color-danger: #D8315B;
+  --font-main: 'Inter', sans-serif;
+  --border-radius-md: 1rem;
+}
+
+.infographic-header {background-color: var(--color-primary);}.info-card {border-radius: var(--border-radius-md);}```Această abordare nu este doar o chestiune de "curățenie" a codului; ea transformă un design static într-un sistem de design (design system) flexibil. Modificarea unei culori la nivel global necesită editarea unei singure linii de cod. Mai mult, implementarea unor funcționalități avansate, precum un "dark mode" sau teme alternative, devine o sarcină trivială, care implică doar suprascrierea acestor variabile într-un context specific, în loc de a modifica zeci sau sute de reguli CSS.3.2. Semantică HTML5 și Accesibilitate (a11y)Îmbunătățirea Semanticii: Structura actuală, deși funcțională, se bazează excesiv pe elemente <div> generice. Se recomandă înlocuirea acestora cu tag-uri HTML5 mai descriptive: <main> pentru a încadra întregul conținut principal al paginii, <article> pentru secțiunile de sine stătătoare (cum ar fi "Perspectiva fizică"), și <aside> pentru informații tangențiale. Această modificare îmbunătățește structura documentului pentru motoarele de căutare (SEO) și, cel mai important, pentru tehnologiile asistive, cum ar fi cititoarele de ecran.Accesibilitatea Componentei de Tab-uri: Componenta de navigare prin tab-uri, deși funcțională vizual, este în prezent complet inaccesibilă pentru utilizatorii care navighează cu ajutorul tastaturii sau al cititoarelor de ecran. Se propune o refactorizare majoră pentru a respecta standardele WAI-ARIA (Web Accessibility Initiative – Accessible Rich Internet Applications).Plan de Acțiune pentru Accesibilitate (a11y):Adăugarea role="tablist" pe containerul de navigare <nav class="tabs"> pentru a informa tehnologiile asistive că acesta este un grup de tab-uri.Adăugarea role="tab" pe fiecare buton <button class="tab-link"> pentru a identifica fiecare element ca fiind un control de tab.Adăugarea role="tabpanel" pe fiecare container de conținut (<div class="tab-content">).Utilizarea atributului aria-controls pe fiecare buton, legându-l de id-ul panoului de conținut pe care îl controlează.Gestionarea dinamică, prin JavaScript, a atributelor aria-selected="true/false" pe butoane (pentru a indica care tab este activ) și a atributului hidden pe panourile de conținut (pentru a ascunde panourile inactive de toți utilizatorii, inclusiv cei cu tehnologii asistive).O interfață web accesibilă nu este o caracteristică opțională, ci o necesitate fundamentală pentru un produs digital profesionist și incluziv. Implementarea acestor atribute transformă o componentă pur vizuală într-una robustă, utilizabilă de către toți.3.3. Performanță WebEliminarea Resurselor Inutile: Fișierul 1 include un link către CDN-ul Tailwind CSS (<script src="https://cdn.tailwindcss.com"></script>). O analiză a codului arată că niciuna dintre clasele de utilități Tailwind nu este folosită; toate stilurile sunt definite manual în blocul <style>. Acest script încarcă inutil aproximativ 80-100 KB de date și este un asset care blochează randarea paginii (render-blocking). Eliminarea sa este o optimizare critică, cu impact imediat și semnificativ asupra vitezei de încărcare a paginii.Minimizare: În contextul unei lansări în producție, fișierul CSS extern (creat conform recomandării 3.1) ar trebui minimizat. Acest proces elimină spațiile albe și comentariile, reducând dimensiunea fișierului și, implicit, timpul de descărcare.3.4. Consolidarea și Îmbunătățirea Avertismentului MedicalAmbele fișiere sursă conțin o formă de disclaimer, un element legal crucial având în vedere natura medicală și holistică a conținutului. Analiza surselor de referință privind bunele practici pentru disclaimere medicale 1 a relevat că textele actuale sunt insuficiente pentru a oferi o protecție legală adecvată.Un disclaimer robust trebuie să specifice clar că informațiile sunt doar în scop educațional, nu înlocuiesc sfatul medical profesionist, și să îndemne utilizatorul să consulte un medic.4 De asemenea, este esențial să se clarifice că utilizarea site-ului nu stabilește o relație medic-pacient și să includă o clauză de non-răspundere pentru deciziile luate de utilizator pe baza informațiilor prezentate.4Prin urmare, se propune înlocuirea textelor existente cu un disclaimer unificat, consolidat și mult mai puternic din punct de vedere legal, bazat pe aceste bune practici.Propunere de Text pentru Disclaimer:Declinarea Responsabilității Medicale și InformaționaleScop Exclusiv Educațional: Informațiile prezentate pe această pagină, inclusiv textele, graficele și alte materiale, sunt furnizate exclusiv în scop educațional și informativ. Acestea nu sunt menite să constituie și nu trebuie interpretate ca sfaturi medicale, diagnostic sau tratament.Consultați un Specialist Calificat: Nu vă bazați pe informațiile de pe acest site pentru a diagnostica sau trata o afecțiune medicală. Consultați întotdeauna un medic sau un alt furnizor de servicii medicale calificat pentru orice întrebare legată de starea dumneavoastră de sănătate. Nu ignorați niciodată sfatul medical profesionist și nu amânați solicitarea acestuia din cauza a ceva ce ați citit aici.Fără Relație Medic-Pacient: Utilizarea acestui site nu stabilește o relație medic-pacient între dumneavoastră și autor(i).Asumarea Responsabilității: Utilizați informațiile de pe acest site pe propriul risc. Autorii și administratorii acestui site nu vor fi ținuți responsabili pentru nicio problemă sau risc rezultat din utilizarea sau acționarea pe baza informațiilor conținute aici. Abordările holistice prezentate sunt menite să fie complementare și nu trebuie să înlocuiască tratamentul medical convențional.Această abordare nu doar că unifică două elemente disparate, ci adaugă o valoare strategică și legală semnificativă proiectului, depășind simpla execuție tehnică.Partea II: Implementarea Finală4. Codul Sursă Unificat și ComentatUrmătoarea secțiune prezintă codul sursă complet al fișierului HTML unificat. Acesta integrează funcționalitatea de tab-uri din Fișierul 2 în estetica Fișierului 1, păstrează intact tot conținutul și aplică deciziile tehnice detaliate în secțiunile anterioare.HTML<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +30,7 @@
             box-sizing: border-box;
             background-color: #f8f9fa;
         }
-      .infographic-container {
+    .infographic-container {
             max-width: 900px;
             width: 100%;
             background: #ffffff;
@@ -31,7 +39,7 @@
             overflow: hidden;
             border: 1px solid #e0e0e0;
         }
-      .infographic-header {
+    .infographic-header {
             background-color: #0A2463; /* Culoare primara din Fisierul 1 */
             color: white;
             padding: 30px 20px;
@@ -41,37 +49,37 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
             position: relative;
         }
-      .infographic-header:before,.infographic-header:after {
+    .infographic-header:before,.infographic-header:after {
             content: '';
             position: absolute;
             width: 0;
             height: 0;
             border-style: solid;
         }
-      .infographic-header:before {
+    .infographic-header:before {
             border-width: 0 0 20px 20px;
             border-color: transparent transparent #0A2463 transparent;
             bottom: 0;
             left: 0;
         }
-      .infographic-header:after {
+    .infographic-header:after {
             border-width: 20px 20px 0 0;
             border-color: #0A2463 transparent transparent transparent;
             top: 0;
             right: 0;
         }
 
-      .section {
+    .section {
             padding: 30px 40px;
             border-bottom: 1px solid #f0f0f0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-      .section:last-child {
+    .section:last-child {
             border-bottom: none;
         }
-      .section-title {
+    .section-title {
             font-size: 1.8em;
             color: #0A2463; /* Culoare primara din Fisierul 1 */
             margin-bottom: 20px;
@@ -80,7 +88,7 @@
             padding-bottom: 5px;
             align-self: stretch;
         }
-      .section-content {
+    .section-content {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
@@ -91,7 +99,7 @@
           STANDARDIZARE: Stilul '.info-card' din Fisierul 1 este folosit ca standard
           pentru toate cardurile, inlocuind clasa '.card' din Fisierul 2.
         */
-      .info-card {
+    .info-card {
             flex: 1;
             min-width: 280px;
             background-color: #ffffff;
@@ -100,55 +108,55 @@
             padding: 20px;
             transition: transform 0.2s ease;
         }
-      .info-card:hover {
+    .info-card:hover {
             transform: translateY(-5px);
         }
-      .info-card h3 {
+    .info-card h3 {
             font-size: 1.3em;
             color: #0A2463;
             margin-top: 0;
             margin-bottom: 15px;
             font-weight: 600;
         }
-      .info-card ul {
+    .info-card ul {
             list-style-type: disc;
             padding-left: 20px;
             font-size: 0.95em;
             color: #475569;
         }
-      .info-card li {
+    .info-card li {
             margin-bottom: 5px;
         }
-      .info-card p {
+    .info-card p {
             font-size: 0.95em;
             margin-bottom: 10px;
         }
-      .info-card.border-blue { border-left: 4px solid #3E92CC; }
-      .info-card.border-green { border-left: 4px solid #06D6A0; }
-      .info-card.border-crimson { border-left: 4px solid #D8315B; }
-      .info-card.border-yellow { border-left: 4px solid #F4C150; }
+    .info-card.border-blue { border-left: 4px solid #3E92CC; }
+    .info-card.border-green { border-left: 4px solid #06D6A0; }
+    .info-card.border-crimson { border-left: 4px solid #D8315B; }
+    .info-card.border-yellow { border-left: 4px solid #F4C150; }
 
         /* Stil pentru sectiunea de nutritie din Fisierul 2, adaptat */
-      .nutrition-columns {
+    .nutrition-columns {
             display: flex;
             gap: 30px;
             width: 100%;
         }
-      .column { flex: 1; }
-      .column h3 {
+    .column { flex: 1; }
+    .column h3 {
             font-size: 1.3em;
             padding-bottom: 10px;
             border-bottom: 2px solid;
             margin-bottom: 15px;
             font-weight: 600;
         }
-      .column-start h3 { color: #06D6A0; border-color: #06D6A0; } /* Adaptat la paleta Fisierului 1 */
-      .column-stop h3 { color: #D8315B; border-color: #D8315B; } /* Adaptat la paleta Fisierului 1 */
-      .column ul { list-style-type: none; padding: 0; }
-      .column li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95em; color: #475569;}
-      .column li span { font-size: 1.5em; margin-right: 15px; width: 30px; text-align: center; }
+    .column-start h3 { color: #06D6A0; border-color: #06D6A0; } /* Adaptat la paleta Fisierului 1 */
+    .column-stop h3 { color: #D8315B; border-color: #D8315B; } /* Adaptat la paleta Fisierului 1 */
+    .column ul { list-style-type: none; padding: 0; }
+    .column li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95em; color: #475569;}
+    .column li span { font-size: 1.5em; margin-right: 15px; width: 30px; text-align: center; }
 
-      .disclaimer {
+    .disclaimer {
             font-size: 0.85em;
             color: #D8315B;
             text-align: center;
@@ -158,7 +166,7 @@
             border-radius: 10px;
             background-color: #ffebe6;
         }
-      .footer-copyright {
+    .footer-copyright {
             text-align: center;
             padding: 20px 0;
             font-size: 0.85em;
@@ -168,12 +176,12 @@
         }
 
         /* --- STILURI PENTRU TAB-URI (MIGRATE DIN FISIERUL 2 SI ADAPTATE) --- */
-      .tabs {
+    .tabs {
             display: flex;
             background-color: #f0f2f5; /* Un gri neutru, in armonie cu paleta */
             border-bottom: 1px solid #e0e0e0;
         }
-      .tab-link {
+    .tab-link {
             padding: 15px 20px;
             cursor: pointer;
             border: none;
@@ -186,27 +194,27 @@
             text-align: center;
             border-bottom: 3px solid transparent; /* Tranzitie lina */
         }
-      .tab-link:hover {
+    .tab-link:hover {
             background-color: #e4e8ec;
         }
-      .tab-link.active {
+    .tab-link.active {
             color: #0A2463; /* Culoare primara din Fisierul 1 */
             border-bottom: 3px solid #3E92CC; /* Culoare de accent din Fisierul 1 */
             background-color: #fff;
         }
-      .tab-link.warning.active {
+    .tab-link.warning.active {
             color: #D8315B; /* Culoare de avertizare din Fisierul 1 */
             border-bottom: 3px solid #D8315B;
         }
 
-      .tab-content-container {
+    .tab-content-container {
             padding: 0; /* Padding-ul este gestionat de clasa.section */
         }
-      .tab-content {
+    .tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-      .tab-content.active {
+    .tab-content.active {
             display: block;
         }
         @keyframes fadeIn {
@@ -216,17 +224,17 @@
 
         /* --- STILURI RESPONSIVE (COMBINATE) --- */
         @media (max-width: 768px) {
-          .section { padding: 20px; }
-          .section-content,.nutrition-columns {
+        .section { padding: 20px; }
+        .section-content,.nutrition-columns {
                 flex-direction: column;
             }
-          .info-card { min-width: unset; }
-          .infographic-header { font-size: 1.8em; }
-          .section-title { font-size: 1.5em; }
-          .tabs { flex-direction: column; }
-          .tab-link { border-bottom: 1px solid #ddd; }
-          .tab-link.active { border-bottom: 3px solid #3E92CC; }
-          .tab-link.warning.active { border-bottom: 3px solid #D8315B; }
+        .info-card { min-width: unset; }
+        .infographic-header { font-size: 1.8em; }
+        .section-title { font-size: 1.5em; }
+        .tabs { flex-direction: column; }
+        .tab-link { border-bottom: 1px solid #ddd; }
+        .tab-link.active { border-bottom: 3px solid #3E92CC; }
+        .tab-link.warning.active { border-bottom: 3px solid #D8315B; }
         }
     </style>
 </head>
@@ -270,8 +278,8 @@
                                 <li><b>Vârsta:</b> Sunt mai frecvente la adulții de vârstă mijlocie (între 40 și 60 de ani), dar pot apărea la orice vârstă.[5]</li>
                                 <li><b>Anumite condiții medicale:</b>
                                     <ul>
-                                        <li><b>Sindromul Gardner:</b> O tulburare genetică rară care implică creșteri multiple de țesuturi, inclusiv lipoame.[6]</li>
-                                        <li><b>Adipoză dureroasă (boala Dercum):</b> O afecțiune rară caracterizată prin creșteri multiple, dureroase, de țesut adipos.[6]</li>
+                                        <li><b>Sindromul Gardner:</b> O tulburare genetică rară care implică creșteri multiple de țesuturi, inclusiv lipoame.[5]</li>
+                                        <li><b>Adipoză dureroasă (boala Dercum):</b> O afecțiune rară caracterizată prin creșteri multiple, dureroase, de țesut adipos.[5]</li>
                                         <li><b>Sindromul Madelung:</b> O afecțiune rară care provoacă acumulări simetrice de grăsime în jurul gâtului și umerilor.[10]</li>
                                     </ul>
                                 </li>
@@ -429,10 +437,41 @@
                         <h2 class="section-title" style="color: #D8315B; border-color: #D8315B; text-align: left; font-size: 1.5em;">⚠️ ATENȚIE: Informație Crucială de Siguranță</h2>
                         <ul style="text-align: left; list-style-position: inside; padding-left: 0; margin-top: 15px;">
                             <li style="margin-bottom: 10px;"><strong>Consultați un medic!</strong> Acest plan este un suport complementar, NU un înlocuitor pentru diagnosticul și tratamentul medical avizat.</li>
-                            <li style="margin-bottom: 10px;"><strong>Confirmarea este esențială:</strong> Doar un medic (dermatolog, chirurg) poate confirma 100% că formațiunea este un lipom benign și nu o altă afecțiune (precum un liposarcom) care necesită tratament de urgență.[6, 8]</li>
+                            <li style="margin-bottom: 10px;"><strong>Confirmarea este esențială:</strong> Doar un medic (dermatolog, chirurg) poate confirma 100% că formațiunea este un lipom benign și nu o altă afecțiune (precum un liposarcom) care necesită tratament de urgență.[5, 8]</li>
                             <li style="margin-bottom: 10px;"><strong>Discutați deschis cu medicul:</strong> Informați medicul despre intenția de a urma acest plan pentru a vă asigura că nu interferează cu alte condiții de sănătate sau tratamente pe care le urmați. Siguranța dumneavoastră este prioritară.</li>
                             <li style="margin-bottom: 0;"><strong>Declinarea responsabilității:</strong> Informațiile prezentate aici sunt doar cu scop educațional și informativ. Nu trebuie să vă bazați pe ele pentru a diagnostica sau trata o afecțiune. Consultați întotdeauna un specialist calificat pentru orice problemă de sănătate.</li>
                         </ul>
+                    </div>
+                </section>
+                <section class="section">
+                    <h2 class="section-title">Referințe</h2>
+                    <div class="info-card border-blue" style="flex-basis: 100%; min-width: 100%;">
+                        <ol style="padding-left: 20px; font-size: 0.9em; line-height: 1.5; color: #475569;">
+                            <li style="margin-bottom: 10px;">Termly. (2024, 1 februarie). *Medical Disclaimer Examples*. Preluat de pe <a href="https://termly.io/resources/articles/medical-disclaimer-examples/" target="_blank" style="color: #3E92CC;">https://termly.io/resources/articles/medical-disclaimer-examples/</a></li>
+                            <li style="margin-bottom: 10px;">GetTerms.io. *Medical Disclaimer Template*. Preluat de pe <a href="https://getterms.io/templates/medical-disclaimer-template" target="_blank" style="color: #3E92CC;">https://getterms.io/templates/medical-disclaimer-template</a></li>
+                            <li style="margin-bottom: 10px;">The Holistic Counseling Center. *Medical Disclaimer*. Preluat de pe <a href="https://www.theholisticcounseling.center/medical-disclaimer" target="_blank" style="color: #3E92CC;">https://www.theholisticcounseling.center/medical-disclaimer</a></li>
+                            <li style="margin-bottom: 10px;">UW Medicine. *Copyright and Healthcare Disclaimer*. Preluat de pe <a href="https://www.uwmedicine.org/about/compliance/disclaimer" target="_blank" style="color: #3E92CC;">https://www.uwmedicine.org/about/compliance/disclaimer</a></li>
+                            <li style="margin-bottom: 10px;">Cleveland Clinic. (2022). *Lipomas*. Preluat de pe <a href="https://my.clevelandclinic.org/health/diseases/15008-lipomas" target="_blank" style="color: #3E92CC;">https://my.clevelandclinic.org/health/diseases/15008-lipomas</a></li>
+                            <li style="margin-bottom: 10px;">drcolinhong.com. (2023, 30 martie). *Everything You Need to Know About Lipoma*. Preluat de pe <a href="https://www.drcolinhong.com/learn/everything-you-need-to-know-about-lipoma/" target="_blank" style="color: #3E92CC;">https://www.drcolinhong.com/learn/everything-you-need-to-know-about-lipoma/</a></li>
+                            <li style="margin-bottom: 10px;">Charifa, A., et al. (2023). *Lipoma*. NCBI Bookshelf. Preluat de pe <a href="https://www.ncbi.nlm.nih.gov/books/NBK482343/" target="_blank" style="color: #3E92CC;">https://www.ncbi.nlm.nih.gov/books/NBK482343/</a></li>
+                            <li style="margin-bottom: 10px;">OncoDaily. (2025, 5 februarie). *Lipoma: Symptoms, Causes, Stages, Diagnosis and Treatment*. Preluat de pe <a href="https://oncodaily.com/oncolibrary/cancer-types/lipoma" target="_blank" style="color: #3E92CC;">https://oncodaily.com/oncolibrary/cancer-types/lipoma</a></li>
+                            <li style="margin-bottom: 10px;">GoodRx. *Lipomas*. Preluat de pe <a href="https://www.goodrx.com/health-topic/dermatology/lipoma" target="_blank" style="color: #3E92CC;">https://www.goodrx.com/health-topic/dermatology/lipoma</a></li>
+                            <li style="margin-bottom: 10px;">Pharmeasy. *Best Home Remedies for Lipoma*. Preluat de pe <a href="https://pharmeasy.in/blog/best-home-remedies-for-lipoma/" target="_blank" style="color: #3E92CC;">https://pharmeasy.in/blog/best-home-remedies-for-lipoma/</a></li>
+                            <li style="margin-bottom: 10px;">Aust, M. C., et al. (2007). *Lipomas after blunt soft tissue trauma: Are they real? Analysis of 31 cases*. ResearchGate. Preluat de pe <a href="https://www.researchgate.net/publication/6283763_Lipomas_after_blunt_soft_tissue_trauma_Are_they_real_Analysis_of_31_cases" target="_blank" style="color: #3E92CC;">https://www.researchgate.net/publication/6283763_Lipomas_after_blunt_soft_tissue_trauma_Are_they_real_Analysis_of_31_cases</a></li>
+                            <li style="margin-bottom: 10px;">Cleveland Clinic. (2022). *Intramuscular Lipoma*. Preluat de pe <a href="https://my.clevelandclinic.org/health/diseases/23907-intramuscular-lipoma" target="_blank" style="color: #3E92CC;">https://my.clevelandclinic.org/health/diseases/23907-intramuscular-lipoma</a></li>
+                            <li style="margin-bottom: 10px;">Wikipedia. *Familial multiple lipomatosis*. Preluat de pe <a href="https://en.wikipedia.org/wiki/Familial_multiple_lipomatosis" target="_blank" style="color: #3E92CC;">https://en.wikipedia.org/wiki/Familial_multiple_lipomatosis</a></li>
+                            <li style="margin-bottom: 10px;">Al-Zoubaidi, M. S., et al. (2024). *Multiple Subcutaneous Lipomas: A Case Report and Review of the Literature*. PMC. Preluat de pe <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11993897/" target="_blank" style="color: #3E92CC;">https://pmc.ncbi.nlm.nih.gov/articles/PMC11993897/</a></li>
+                            <li style="margin-bottom: 10px;">Prodia Digital. *Foods That Help Reduce Lipoma*. Preluat de pe <a href="https://prodiadigital.com/en/articles/foods-that-help-reduce-lipoma" target="_blank" style="color: #3E92CC;">https://prodiadigital.com/en/articles/foods-that-help-reduce-lipoma</a></li>
+                            <li style="margin-bottom: 10px;">The Minor Surgery Center. (2025, 27 iunie). *New Research of Lipoma 2025: Groundbreaking Advances in Treatment and Understanding*. Preluat de pe <a href="https://www.theminorsurgerycenter.com/blog/new-research-of-lipoma-2025" target="_blank" style="color: #3E92CC;">https://www.theminorsurgerycenter.com/blog/new-research-of-lipoma-2025</a></li>
+                            <li style="margin-bottom: 10px;">Walmart. *Milk Thistle, Dandelion, and Turmeric Supplements*. Preluat de pe <a href="https://www.walmart.com/c/kp/milk-thistle-dandelion-and-turmeric-supplements-u" target="_blank" style="color: #3E92CC;">https://www.walmart.com/c/kp/milk-thistle-dandelion-and-turmeric-supplements-u</a></li>
+                            <li style="margin-bottom: 10px;">The Minor Surgery Center. (2025, 24 iunie). *Does Castor Oil Work for Lipomas?*. Preluat de pe <a href="https://www.theminorsurgerycenter.com/blog/does-castor-oil-work-for-lipomas" target="_blank" style="color: #3E92CC;">https://www.theminorsurgerycenter.com/blog/does-castor-oil-work-for-lipomas</a></li>
+                            <li style="margin-bottom: 10px;">Jain, A. (2025, 16 aprilie). *Castor Oil: A Natural Remedy for Lipoma Treatment?*. Preluat de pe <a href="https://www.dramitajain.com/blog/2025/04/16/castor-oil-natural-remedy-lipoma-treatment/" target="_blank" style="color: #3E92CC;">https://www.dramitajain.com/blog/2025/04/16/castor-oil-natural-remedy-lipoma-treatment/</a></li>
+                            <li style="margin-bottom: 10px;">eBay. *Lipoma essential oil blend roller*. Preluat de pe <a href="https://www.ebay.com/itm/224634706651" target="_blank" style="color: #3E92CC;">https://www.ebay.com/itm/224634706651</a></li>
+                            <li style="margin-bottom: 10px;">Alaska Dream Botanicals. *Lipoma Treatment Roll-on Healing Oils*. Preluat de pe <a href="https://alaskandreambotanicals.com/products/lipoma-treatment-roll-on-healing-oils" target="_blank" style="color: #3E92CC;">https://alaskandreambotanicals.com/products/lipoma-treatment-roll-on-healing-oils</a></li>
+                            <li style="margin-bottom: 10px;">Physio-pedia. *Manual Lymphatic Drainage*. Preluat de pe <a href="https://www.physio-pedia.com/Manual_Lymphatic_Drainage" target="_blank" style="color: #3E92CC;">https://www.physio-pedia.com/Manual_Lymphatic_Drainage</a></li>
+                            <li style="margin-bottom: 10px;">Lipedema.net. *Self Manual Lymph Drainage*. Preluat de pe <a href="https://lipedema.net/self-manual-lymph-drainage/" target="_blank" style="color: #3E92CC;">https://lipedema.net/self-manual-lymph-drainage/</a></li>
+                            <li style="margin-bottom: 10px;">The Minor Surgery Center. *How to Remove a Lipoma Yourself*. Preluat de pe <a href="https://www.theminorsurgerycenter.com/blog/how-to-remove-a-lipoma-yourself" target="_blank" style="color: #3E92CC;">https://www.theminorsurgerycenter.com/blog/how-to-remove-a-lipoma-yourself</a></li>
+                        </ol>
                     </div>
                 </section>
             </div>

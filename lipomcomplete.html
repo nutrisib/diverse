@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lipomul: O Abordare Integrativă - De la Cauze la Plan Terapeutic</title>
+    <title>Lipomul: o analiză holistică - cauze fizice și emoționale</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,17 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Stiluri comune - AM PĂSTRAT ȘI INTEGRAT STILURILE DVS. */
+        /* Stiluri comune pentru infografice - integrate */
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             margin: 0;
-            color: #212529;
+            color: #212529; /* Dark text */
             display: flex;
             justify-content: center;
             padding: 40px 20px;
             box-sizing: border-box;
-            background-color: #f8f9fa;
+            background-color: #f8f9fa; /* Light background for this specific infographic */
         }
         .infographic-container {
             max-width: 900px;
@@ -33,27 +33,41 @@
             border: 1px solid #e0e0e0;
         }
         .infographic-header {
-            background-color: #0A2463;
+            background-color: #0A2463; /* Dark blue from palette */
             color: white;
             padding: 30px 20px;
             text-align: center;
-        }
-        .infographic-header h1 {
             font-size: 2.2em;
             font-weight: 700;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-            margin: 0 0 10px 0;
+            position: relative;
         }
-        .infographic-header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-            margin: 0;
-            font-weight: 400;
+        .infographic-header:before, .infographic-header:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .infographic-header:before {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent #0A2463 transparent; /* Match header background */
+            bottom: 0;
+            left: 0;
+        }
+        .infographic-header:after {
+            border-width: 20px 20px 0 0;
+            border-color: #0A2463 transparent transparent transparent; /* Match header background */
+            top: 0;
+            right: 0;
         }
 
         .section {
             padding: 30px 40px;
             border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         .section:last-child {
             border-bottom: none;
@@ -61,21 +75,14 @@
 
         .section-title {
             font-size: 1.8em;
-            color: #0A2463;
+            color: #0A2463; /* Dark blue from palette */
             margin-bottom: 20px;
             font-weight: 700;
-            border-bottom: 2px solid #3E92CC;
-            padding-bottom: 10px;
+            border-bottom: 2px solid #3E92CC; /* Medium blue from palette */
+            padding-bottom: 5px;
+            align-self: stretch;
         }
-        .section-subtitle {
-             font-size: 1.4em;
-             font-weight: 600;
-             color: #1e4a8a;
-             margin-top: 25px;
-             margin-bottom: 20px;
-        }
-        
-        .section-content, .grid-container {
+        .section-content {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
@@ -88,12 +95,10 @@
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             padding: 20px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border-left: 4px solid transparent;
+            transition: transform 0.2s ease;
         }
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
         .info-card h3 {
             font-size: 1.3em;
@@ -103,62 +108,255 @@
             font-weight: 600;
         }
         .info-card ul {
-            list-style-type: none;
-            padding-left: 5px;
+            list-style-type: disc;
+            padding-left: 20px;
             font-size: 0.95em;
             color: #475569;
         }
         .info-card li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .info-card li:before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #3E92CC;
-            font-weight: bold;
+            margin-bottom: 5px;
         }
         .info-card p {
             font-size: 0.95em;
             margin-bottom: 10px;
         }
-        .info-card.border-blue { border-left-color: #3E92CC; }
-        .info-card.border-green { border-left-color: #06D6A0; }
-        .info-card.border-crimson { border-left-color: #D8315B; }
-        .info-card.border-yellow { border-left-color: #F4C150; }
+        .info-card.border-blue { border-left: 4px solid #3E92CC; }
+        .info-card.border-green { border-left: 4px solid #06D6A0; }
+        .info-card.border-crimson { border-left: 4px solid #D8315B; }
+        .info-card.border-yellow { border-left: 4px solid #F4C150; }
 
-        /* STILURI NOI INTEGRATE PENTRU PLANUL DE NUTRIȚIE */
+        .disclaimer {
+            font-size: 0.85em;
+            color: #D8315B;
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #D8315B;
+            border-radius: 10px;
+            background-color: #ffebe6;
+        }
+        .footer-copyright {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85em;
+            color: #6c757d;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            .info-card {
+                min-width: unset;
+            }
+            .infographic-header {
+                font-size: 1.8em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+		       /* --- General Styling & Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* --- Main Container --- */
+        .infographic-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* --- Header --- */
+        .header {
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #008080, #005f5f);
+            color: white;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- Tabs Navigation --- */
+        .tabs {
+            display: flex;
+            background-color: #eef2f1;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-link {
+            padding: 15px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            font-size: 1em;
+            font-weight: 700;
+            color: #555;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .tab-link:hover {
+            background-color: #dce5e3;
+        }
+        .tab-link.active {
+            color: #008080;
+            border-bottom: 3px solid #008080;
+            background-color: #fff;
+        }
+        .tab-link.warning.active {
+            color: #c0392b;
+            border-bottom: 3px solid #c0392b;
+        }
+
+        /* --- Tab Content --- */
+        .tab-content-container {
+            padding: 30px;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Content Sections Styling --- */
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .section h2 {
+            font-size: 1.5em;
+            color: #005f5f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section h2 span {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* --- Specific Section: Warning --- */
+        .warning-section {
+            background-color: #fbecec;
+            border: 2px solid #c0392b;
+            border-radius: 8px;
+            padding: 20px;
+            color: #c0392b;
+        }
+        .warning-section h2 {
+            color: #c0392b;
+        }
+        .warning-section ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .warning-section li {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* --- Grid & Card Layouts --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #008080;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #005f5f;
+            font-size: 1.2em;
+        }
+        .card p, .card ul {
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .card ul {
+            padding-left: 20px;
+        }
+        .card li {
+            margin-bottom: 5px;
+        }
+
+        /* --- Two-column layout for Nutrition --- */
         .nutrition-columns {
             display: flex;
             gap: 30px;
-            width: 100%;
         }
         .column {
             flex: 1;
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
         }
         .column h3 {
             font-size: 1.3em;
             padding-bottom: 10px;
             border-bottom: 2px solid;
             margin-bottom: 15px;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
         }
-        .column-start h3 { color: #27ae60; border-color: #27ae60; }
-        .column-stop h3 { color: #e74c3c; border-color: #e74c3c; }
-        .column ul { list-style-type: none; padding: 0; }
+        .column-start h3 {
+            color: #27ae60;
+            border-color: #27ae60;
+        }
+        .column-stop h3 {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        .column ul {
+            list-style-type: none;
+            padding: 0;
+        }
         .column li {
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            font-size: 0.95em;
-            color: #475569;
         }
         .column li span {
             font-size: 1.5em;
@@ -166,167 +364,298 @@
             width: 30px;
             text-align: center;
         }
-        /* -- END STILURI NOI -- */
-
-        .disclaimer {
-            font-size: 0.95em;
-            color: #D8315B;
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #D8315B;
-            border-radius: 10px;
-            background-color: #fff5f5;
-        }
-        .footer-copyright {
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.85em;
-            color: #6c757d;
-            background-color: #f8f9fa;
-        }
-
-        /* Responsive adjustments */
+        
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .section { padding: 20px; }
-            .section-content, .grid-container, .nutrition-columns {
+            body {
+                padding: 10px;
+            }
+            .nutrition-columns {
                 flex-direction: column;
             }
-            .info-card { min-width: unset; }
-            .infographic-header h1 { font-size: 1.8em; }
-            .section-title { font-size: 1.5em; }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-link {
+                border-bottom: 1px solid #ddd;
+            }
+            .tab-link.active {
+                 border-bottom: 3px solid #008080;
+            }
         }
     </style>
 </head>
 <body>
     <div class="infographic-container">
         <div class="infographic-header">
-            <h1>Lipomul: O Abordare Integrativă</h1>
-            <p>De la Cauze Emoționale și Fizice la Plan Terapeutic Complet</p>
+            Lipomul: o analiză holistică - cauze fizice și emoționale
         </div>
 
         <section class="section">
-            <h2 class="section-title">Partea I: Ce este și de ce apare? (Analiza Fizică)</h2>
+            <h2 class="section-title">Perspectiva fizică: înțelegerea lipomului</h2>
             <div class="section-content">
                 <div class="info-card border-blue">
                     <h3>Ce este un lipom?</h3>
-                    <p>O tumoră benignă (necanceroasă) din țesut adipos (grăsime). De obicei, este o masă moale, mobilă, nedureroasă, situată chiar sub piele.</p>
+                    <p>Un lipom este o tumoră benignă (necanceroasă) formată din țesut adipos (grăsime). Este, de obicei, o masă moale, mobilă, nedureroasă, situată chiar sub piele. Lipomii pot apărea oriunde pe corp unde există celule adipoase, dar sunt cel mai frecvent întâlniți pe trunchi, gât, umeri, spate și brațe.</p>
                     <ul>
                         <li><b>Natură:</b> Benignă (necanceroasă).</li>
                         <li><b>Compoziție:</b> Celule adipoase mature.</li>
                         <li><b>Consistență:</b> Moale, cauciucată.</li>
-                        <li><b>Mobilitate:</b> Se mișcă ușor sub piele.</li>
+                        <li><b>Mobilitate:</b> Se mișcă ușor sub piele la palpare.</li>
+                        <li><b>Durere:</b> De obicei nedureroși, dar pot deveni dureroși dacă apasă pe nervi sau dacă sunt inflamați.</li>
                     </ul>
                 </div>
                 <div class="info-card border-green">
                     <h3>Cauze fizice și factori de risc</h3>
-                    <p>Cauza exactă nu este pe deplin înțeleasă, dar implică o combinație de factori:</p>
+                    <p>Cauza exactă a lipomilor nu este pe deplin înțeleasă, dar se crede că o combinație de factori genetici și de mediu joacă un rol.</p>
                     <ul>
-                        <li><b>Genetică:</b> Predispoziție familială puternică.</li>
-                        <li><b>Vârsta:</b> Mai frecvente la adulții de 40-60 de ani.</li>
-                        <li><b>Metabolism:</b> Posibile disfuncții în metabolismul grăsimilor.</li>
-                        <li><b>Anumite condiții medicale:</b> Sindromul Gardner, boala Dercum etc.</li>
-                        <li><b>Traumatisme:</b> O lovitură poate declanșa uneori formarea unuia.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Partea a II-a: Mesajul Emoțional și Energetic</h2>
-            <div class="section-content">
-                <div class="info-card border-yellow">
-                    <h3>Semnificația acumulării de grăsime (lipom)</h3>
-                    <p>Grăsimea simbolizează o formă de "stocare" sau "protecție" la nivel emoțional:</p>
-                    <ul>
-                        <li><b>Stocarea emoțiilor nerezolvate:</b> Furie, tristețe, vinovăție sau frică pe care refuzăm să le eliberăm.</li>
-                        <li><b>Protecție și autoapărare:</b> O "barieră" fizică pe care corpul o creează pentru a se proteja de o amenințare percepută.</li>
-                        <li><b>Dificultatea de a "lăsa să plece":</b> Rezistență la schimbare, la renunțarea la vechi tipare sau credințe.</li>
+                        <li><b>Genetică:</b> Există o predispoziție familială, sugerând o componentă genetică. Persoanele cu istoric familial de lipoame sunt mai predispuse să le dezvolte.</li>
+                        <li><b>Obezitate:</b> Deși nu este o cauză directă, obezitatea poate crește riscul de a dezvolta lipoame, deoarece implică o cantitate mai mare de țesut adipos.</li>
+                        <li><b>Vârsta:</b> Sunt mai frecvente la adulții de vârstă mijlocie (între 40 și 60 de ani), dar pot apărea la orice vârstă.</li>
+                        <li><b>Anumite condiții medicale:</b>
+                            <ul>
+                                <li><b>Sindromul Gardner:</b> O tulburare genetică rară care implică creșteri multiple de țesuturi, inclusiv lipoame.</li>
+                                <li><b>Adipoză dureroasă (boala Dercum):</b> O afecțiune rară caracterizată prin creșteri multiple, dureroase, de țesut adipos.</li>
+                                <li><b>Sindromul Madelung:</b> O afecțiune rară care provoacă acumulări simetrice de grăsime în jurul gâtului și umerilor.</li>
+                            </ul>
+                        </li>
+                        <li><b>Traumatisme:</b> Unele studii sugerează că un traumatism fizic minor (lovitură, vânătăi) într-o anumită zonă poate declanșa formarea unui lipom, deși mecanismul nu este clar.</li>
+                        <li><b>Metabolismul lipidelor:</b> Posibile disfuncții în metabolismul grăsimilor la nivel local.</li>
                     </ul>
                 </div>
                 <div class="info-card border-crimson">
-                    <h3>Semnificația localizării: Gât, Față, Partea Dreaptă</h3>
-                    <p>Localizarea specifică adaugă straturi de înțelegere:</p>
+                    <h3>Localizarea lipomului: gâtul, sub ureche și pe față (partea dreaptă)</h3>
+                    <p>Localizarea lipomului pe gât, sub ureche și pe față este mai puțin comună pentru lipomii solitari și poate sugera anumite particularități:</p>
                     <ul>
-                        <li><b>Gâtul (Chakra Comunicării):</b> Dificultăți în a-ți exprima adevărul, cuvinte "ne-spuse", senzația de a fi "sufocat" emoțional.</li>
-                        <li><b>Fața (Identitatea):</b> Probleme legate de auto-imagine, frica de judecată, dorința de a ascunde aspecte ale sinelui.</li>
-                        <li><b>Partea Dreaptă (Principiul Masculin):</b> Conflicte legate de acțiune, logică, autoritate, lumea exterioară sau relația cu tatăl.</li>
+                        <li><b>Gât:</b> O zonă comună pentru lipoame. Acumulările de grăsime aici pot fi legate de factori genetici sau de stil de viață.</li>
+                        <li><b>Sub ureche și pe față:</b> Această extindere poate indica o acumulare de țesut adipos în zone cu rețea limfatică bogată sau în țesuturi conjunctive specifice feței și gâtului.</li>
+                        <li><b>Partea dreaptă a corpului:</b> În medicina holistică și energetică, partea dreaptă este adesea asociată cu aspecte legate de:
+                            <ul>
+                                <li><b>Principiul masculin:</b> Relația cu tatăl, cu autoritatea, cu acțiunea, cu logica, cu latura "a da" sau a "exterioriza".</li>
+                                <li><b>Lumea exterioară:</b> Modul în care interacționăm cu mediul exterior, cu munca, cu societatea.</li>
+                                <li><b>Control și structură:</b> Dificultăți în a gestiona controlul sau structura în viață.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Partea a III-a: Plan Terapeutic Integrativ (Acțiune)</h2>
-            
-            <h3 class="section-subtitle">1. Pilonul Nutrițional: Dieta Anti-inflamatoare</h3>
-            <div class="nutrition-columns">
-                <div class="column column-start">
-                    <h3>✔️ START</h3>
+            <h2 class="section-title">Perspectiva holistică: mesajul lipomului</h2>
+            <p>Din perspectivă holistică, orice manifestare fizică în corp este considerată un mesaj al subconștientului, o expresie a unor emoții, gânduri sau tipare energetice nerezolvate. Lipomul, ca o acumulare benignă de grăsime, este adesea interpretat ca o "stocare" sau "îngrădire" a ceva la nivel emoțional sau energetic.</p>
+
+            <div class="section-content">
+                <div class="info-card border-yellow">
+                    <h3>Semnificația acumulării de grăsime (lipom)</h3>
                     <ul>
-                        <li><span>🥦</span><strong>Crucifere:</strong> Broccoli, varză, conopidă pentru detoxifierea ficatului.</li>
-                        <li><span>🥬</span><strong>Frunze Verzi:</strong> Spanac, kale, salată pentru antioxidanți.</li>
-                        <li><span>🐟</span><strong>Omega-3:</strong> Somon, sardine, nuci, semințe de in pentru a reduce inflamația.</li>
-                        <li><span>🥑</span><strong>Grăsimi Sănătoase:</strong> Avocado, ulei de măsline extravirgin.</li>
-                        <li><span>🍓</span><strong>Fructe de Pădure:</strong> Afine, zmeură, mure, pline de antioxidanți.</li>
-                        <li><span>💧</span><strong>Hidratare:</strong> Apă, ceai verde, ceai de păpădie.</li>
+                        <li><b>Stocarea emoțiilor nerezolvate:</b> Grăsimea poate simboliza emoții sau traume pe care le "ținem" în noi, refuzând să le eliberăm. Poate fi furie, tristețe, resentimente, vinovăție sau frică. (Referință: Michael Odoul - Ghidul complet al durerilor fizice.pdf, pagina 175; Gabor Mate - Cand corpul spune nu (2021).pdf, pagina 1)</li>
+                        <li><b>Protecție și autoapărare:</b> Lipomul poate fi o "barieră" fizică sau energetică pe care corpul o creează pentru a se proteja de o amenințare percepută (reală sau imaginară), de durere emoțională sau de influențe externe. Este o modalitate de a te "îngrădi" sau de a te "izola" de ceea ce te rănește. (Referință: Caroline Myss - De ce nu ne vindecăm singuri.pdf, pagina 45)</li>
+                        <li><b>Sentiment de insecuritate:</b> Acumularea de grăsime poate fi legată de o nevoie profundă de siguranță și confort, o încercare a corpului de a crea o "rezervă" sau un "tampon" împotriva insecurității.</li>
+                        <li><b>Dificultatea de a "lăsa să plece":</b> Poate indica o rezistență la schimbare, o dificultate de a renunța la vechi tipare, credințe sau relații care nu mai servesc.</li>
+                        <li><b>"Îngrădirea" vitalității sau a potențialului:</b> Grăsimea poate simboliza și un potențial neexprimat, o creativitate blocată sau o vitalitate care este "stocată" în loc să fie manifestată.</li>
                     </ul>
                 </div>
-                <div class="column column-stop">
-                    <h3>❌ STOP</h3>
+                <div class="info-card border-crimson">
+                    <h3>Semnificația localizării: gât, sub ureche, față (partea dreaptă)</h3>
+                    <p>Localizarea specifică a lipomului adaugă straturi de semnificație holistică:</p>
                     <ul>
-                        <li><span>🍰</span><strong>Zahăr și Făină Albă:</strong> Dulciuri, patiserie, pâine albă.</li>
-                        <li><span>🍟</span><strong>Prăjeli și Grăsimi Nocive:</strong> Uleiuri vegetale procesate, margarină.</li>
-                        <li><span>🌭</span><strong>Alimente Procesate:</strong> Mezeluri, mâncare fast-food, aditivi.</li>
-                        <li><span>🍷</span><strong>Alcool:</strong> Toxină directă pentru ficat.</li>
-                        <li><span>🥛</span><strong>Lactate și Gluten:</strong> De testat eliminarea lor, pot fi pro-inflamatorii.</li>
+                        <li><b>Gâtul:</b> Este centrul comunicării și al auto-exprimării (asociat cu chakra gâtului - Vishuddha). Problemele la gât sunt adesea legate de dificultăți în a-ți exprima adevărul, de a-ți spune părerea, de a te simți "neînțeles" sau "sufocat" emoțional. Poate fi o reținere a cuvintelor sau a emoțiilor. (Referință: The subtle body- An encyclopedia of your energetic anatomy -- Cyndi Dale -- ( WeLib.org ).pdf, pagina 73; Ilchi Lee - Healing chakras - awaken your bodys energy system for.pdf, pagina 31)</li>
+                        <li><b>Sub ureche:</b> Poate indica o dificultate de a "asculta" anumite lucruri (adevăruri neplăcute, critici, sfaturi) sau, dimpotrivă, o senzație de a fi "bombardat" cu informații sau zgomote pe care nu le poți filtra. Poate fi legat de încăpățânare în a nu auzi anumite mesaje.</li>
+                        <li><b>Fața:</b> Reprezintă modul în care ne prezentăm lumii, identitatea noastră, "masca" pe care o purtăm. Un lipom pe față poate indica probleme legate de auto-imagine, frica de judecată, dorința de a ascunde anumite aspecte ale sinelui sau de a "pune o față" pentru lume.</li>
+                        <li><b>Partea dreaptă a corpului:</b> În tradițiile holistice, partea dreaptă este asociată cu:
+                            <ul>
+                                <li><b>Principiul masculin:</b> Relația cu tatăl, cu autoritatea, cu acțiunea, cu logica, cu latura "a da" sau a "exterioriza". (Referință: Boli - cauze emoționale.docx, pagina 1)</li>
+                                <li><b>Lumea exterioară:</b> Modul în care interacționăm cu mediul exterior, cu munca, cu societatea.</li>
+                                <li><b>Control și structură:</b> Dificultăți în a gestiona controlul sau structura în viață, sau o rezistență la acestea.</li>
+                            </ul>
+                            Un lipom pe partea dreaptă a gâtului/feței ar putea sugera o "stocare" de furie, frustrare sau resentimente legate de aceste aspecte masculine/externe, sau o dificultate în a-ți afirma puterea personală în aceste domenii. Poate fi o "îngrădire" a expresiei masculine sau a acțiunii.</li>
                     </ul>
                 </div>
             </div>
+        </section>
 
-            <h3 class="section-subtitle">2. Pilonul Terapeutic: Suport Fizic și Energetic</h3>
-            <div class="grid-container">
+        <section class="section">
+            <h2 class="section-title">Calea spre echilibru: o abordare holistică integrată</h2>
+            <p>Abordarea unui lipom din perspectivă holistică implică explorarea și eliberarea tiparelor emoționale și energetice subiacente, alături de gestionarea aspectelor fizice. Este esențial ca această abordare să fie complementară tratamentului medical și să nu îl înlocuiască.</p>
+
+            <div class="section-content">
                 <div class="info-card border-blue">
-                    <h3>Aplicații Locale Directe</h3>
-                     <ul>
-                        <li><b>Ulei de Ricin:</b> Compresă caldă aplicată pe zonă, 30-60 min, de 4-5 ori/săptămână. Stimulează profund circulația limfatică și sanguină locală.</li>
-                        <li><b>Uleiuri Esențiale:</b> Masaj ușor cu un amestec de Tămâie, Tea Tree și Grepfrut diluate în ulei purtător (ex. cocos).</li>
+                    <h3>1. Suport fizic și nutrițional</h3>
+                    <ul>
+                        <li><b>Consult medical:</b> Primul pas este întotdeauna consultarea unui medic pentru un diagnostic precis și excluderea altor afecțiuni. Opțiunile medicale pot include monitorizarea, îndepărtarea chirurgicală sau liposucția.</li>
+                        <li><b>Detoxifiere și suport hepatic:</b> O dietă bogată în alimente integrale, organice, cu accent pe legume verzi, fructe de pădure, alimente amare, care susțin funcția hepatică și procesele de detoxifiere. Reducerea alimentelor procesate, a zahărului, a grăsimilor nesănătoase și a alcoolului. (Referință: Vasey, C. (2008). Ghid de Detoxifiere. Niculescu.)</li>
+                        <li><b>Hidratare optimă:</b> Consumul adecvat de apă pură pentru a susține eliminarea toxinelor și funcția celulară.</li>
+                        <li><b>Suport limfatic:</b> Masaj limfatic, periaj uscat, activitate fizică moderată pentru a stimula circulația limfei și a reduce stagnarea.</li>
+                        <li><b>Echilibru hormonal:</b> Evaluarea și, dacă este necesar, echilibrarea hormonală (sub îndrumare medicală), deoarece dezechilibrele hormonale pot influența depozitele de grăsime.</li>
+                        <li><b>Suplimente (sub îndrumare):</b> Colina, inozitol, L-metionină, extract de anghinare, armurariu (pentru suport hepatic). Omega-3 pentru reducerea inflamației.</li>
                     </ul>
                 </div>
-                 <div class="info-card border-green">
-                    <h3>Terapii Fizice Cheie</h3>
-                     <ul>
-                        <li><b>Drenaj Limfatic Manual:</b> Crucial pentru a debloca stagnarea din zona gâtului și a feței. Căutați un terapeut specializat!</li>
-                        <li><b>Masaj Terapeutic:</b> Eliberează tensiunea din mușchii gâtului și umerilor, îmbunătățind circulația.</li>
-                         <li><b>Acupunctură:</b> Poate ajuta la reechilibrarea energetică a meridianelor asociate cu ficatul și splina.</li>
+                <div class="info-card border-green">
+                    <h3>2. Eliberare emoțională și echilibrare energetică</h3>
+                    <ul>
+                        <li><b>Jurnalism terapeutic:</b> Scrie despre emoțiile refulate, frustrările legate de comunicare, resentimentele față de figurile de autoritate (în special tatăl sau principiul masculin). Explorează sentimentele de insecuritate sau de a fi "invadat".</li>
+                        <li><b>Terapie și coaching:</b> Lucrul cu un terapeut pentru a procesa traumele nerezolvate, a elibera furia reprimată și a dezvolta strategii de comunicare asertivă. (Referință: Peter B Bongiorno - Holistic Solutions for Anxiety and Depression in Therapy.pdf, pagina 4)</li>
+                        <li><b>Practici de auto-exprimare:</b> Cântat, vorbit în public, art-terapie, scris creativ – orice formă care permite eliberarea energiei blocate în zona gâtului și a feței.</li>
+                        <li><b>Meditație și vizualizare:</b> Meditații de eliberare a tensiunii din gât și umeri. Vizualizarea lipomului ca o "stocare" de energie veche, și apoi vizualizarea eliberării și dizolvării sale. Meditații pentru chakra gâtului (Vishuddha) pentru a deschide și armoniza centrul comunicării. (Referință: The subtle body- An encyclopedia of your energetic anatomy -- Cyndi Dale -- ( WeLib.org ).pdf, pagina 73)</li>
+                        <li><b>Lucrul cu relația paternă:</b> Dacă lipomul este pe partea dreaptă, explorarea relației cu tatăl sau cu arhetipul masculin (autoritate, acțiune, structură) poate fi benefică. Iertarea și acceptarea pot elibera blocaje profunde. (Referință: Boli - cauze emoționale.docx, pagina 1)</li>
+                        <li><b>Afirmații pozitive:</b> Formularea și repetarea de afirmații precum: "Îmi exprim adevărul cu ușurință și grație. Sunt în siguranță să mă eliberez de ceea ce nu-mi mai servește. Mă protejez cu iubire și îmi stabilesc granițe sănătoase. Sunt liber/ă să fiu eu însumi/însămi."</li>
                     </ul>
                 </div>
                 <div class="info-card border-yellow">
-                    <h3>Eliberare Emoțională</h3>
+                    <h3>3. Stil de viață și managementul stresului</h3>
                     <ul>
-                        <li><b>Jurnalism Terapeutic:</b> Scrie despre emoțiile refulate, frustrările legate de comunicare și relația cu principiul masculin.</li>
-                        <li><b>Practici de Auto-exprimare:</b> Cântat, art-terapie, vorbit în public pentru a elibera energia blocată în zona gâtului.</li>
-                        <li><b>Afirmații Pozitive:</b> "Îmi exprim adevărul cu ușurință și grație. Sunt în siguranță să mă eliberez de ceea ce nu-mi mai servește."</li>
-                    </ul>
-                </div>
-                 <div class="info-card border-crimson">
-                    <h3>Stil de Viață și Managementul Stresului</h3>
-                    <ul>
-                        <li><b>Gestionarea Stresului:</b> Yoga, tai chi, respirație profundă, mindfulness pentru a reduce nivelul de cortizol (hormonul stresului).</li>
-                        <li><b>Somn Odihnitor:</b> 7-9 ore pe noapte pentru regenerare celulară și echilibru hormonal.</li>
-                         <li><b>Activitate Fizică:</b> Mișcarea regulată stimulează circulația generală și ajută la eliminarea toxinelor.</li>
+                        <li><b>Gestionarea stresului:</b> Stresul cronic poate contribui la dezechilibre hormonale și la acumularea de toxine. Practici precum yoga, tai chi, respirația profundă, mindfulness reduc nivelul de cortizol și susțin echilibrul energetic. (Referință: Gabor Mate - Cand corpul spune nu (2021).pdf, pagina 1)</li>
+                        <li><b>Somn odihnitor:</b> Asigurarea unui somn de 7-8 ore pe noapte este crucială pentru regenerarea celulară și echilibrul hormonal.</li>
+                        <li><b>Activitate fizică regulată:</b> Mișcarea stimulează circulația sanguină și limfatică, ajutând la eliminarea toxinelor și la reducerea stagnării.</li>
+                        <li><b>Conexiunea cu natura:</b> Timpul petrecut în natură, "împământarea" (grounding) pot ajuta la eliberarea energiei stagnante și la reconectarea cu ritmurile naturale ale corpului.</li>
                     </ul>
                 </div>
             </div>
-
             <div class="disclaimer">
-                <b>⚠️ AVERTISMENT ȘI DECLINAREA RESPONSABILITĂȚII:</b> Informațiile prezentate sunt cu scop educațional și nu constituie sfaturi medicale. Primul și cel mai important pas este consultarea unui medic pentru un diagnostic precis. Abordările holistice sunt complementare și NU înlocuiesc tratamentul medical convențional. Discutați cu medicul dumneavoastră înainte de a începe orice nou plan terapeutic.
+                <b>Declinarea responsabilității:</b> Informațiile prezentate aici sunt doar cu scop educațional și informativ și nu constituie sfaturi medicale. Nu trebuie să vă bazați pe ele pentru a diagnostica sau trata o afecțiune. Consultați întotdeauna un medic sau un specialist calificat pentru orice problemă de sănătate. Abordările holistice sunt complementare și nu înlocuiesc tratamentul medical convențional.
             </div>
         </section>
 
         <footer class="footer-copyright">
-            <p>Copyright: dr.ing. Radu Pascu - 2025 | Conținut integrat și structurat de Gemini</p>
+            <p>Copyright: dr.ing. Radu Pascu - 2025</p>
         </footer>
     </div>
-</body>
+    <div class="infographic-container">
+        <header class="header">
+            <h1>Plan Terapeutic Holistic pentru Managementul Lipomului</h1>
+            <p>O abordare integrativă pentru echilibru intern și sănătate</p>
+        </header>
+        
+        <nav class="tabs">
+            <button class="tab-link active" data-tab="plan">📜 Plan Terapeutic</button>
+            <button class="tab-link warning" data-tab="avertisment">⚠️ Avertisment Medical</button>
+        </nav>
+        
+        <div class="tab-content-container">
+            <div id="plan" class="tab-content active">
+                
+                <section class="section">
+                    <h2><span>🧠</span>De ce apare un Lipom? (Perspectiva Holistică)</h2>
+                    <div class="grid-container">
+                        <div class="card"><h3>💧 Stagnare Limfatică</h3><p>Sistemul de "curățenie" al organismului este lent sau blocat.</p></div>
+                        <div class="card"><h3>⚖️ Ficat Supraîncărcat</h3><p>"Procesorul" de grăsimi al corpului este copleșit de toxine.</p></div>
+                        <div class="card"><h3>⚙️ Dezechilibru Metabolic</h3><p>Dificultăți în procesarea eficientă a zahărului și a grăsimilor.</p></div>
+                        <div class="card"><h3>🔥 Inflamație Cronică</h3><p>O stare de "alertă" constantă în organism care favorizează diverse afecțiuni.</p></div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><span>🥗</span>Pilonul 1: Nutriția Anti-inflamatoare</h2>
+                    <div class="nutrition-columns">
+                        <div class="column column-start">
+                            <h3>✔️ START</h3>
+                            <ul>
+                                <li><span>🥦</span><strong>Crucifere:</strong> Broccoli, varză, conopidă pentru detoxifierea ficatului.</li>
+                                <li><span>🥬</span><strong>Frunze Verzi:</strong> Spanac, kale, salată pentru antioxidanți.</li>
+                                <li><span>🐟</span><strong>Omega-3:</strong> Somon, sardine, nuci, semințe de in pentru a reduce inflamația.</li>
+                                <li><span>🥑</span><strong>Grăsimi Sănătoase:</strong> Avocado, ulei de măsline extravirgin.</li>
+                                <li><span>🍓</span><strong>Fructe de Pădure:</strong> Afine, zmeură, mure, pline de antioxidanți.</li>
+                                <li><span>💧</span><strong>Hidratare:</strong> Apă, ceai verde, ceai de păpădie.</li>
+                            </ul>
+                        </div>
+                        <div class="column column-stop">
+                            <h3>❌ STOP</h3>
+                            <ul>
+                                <li><span>🍰</span><strong>Zahăr și Făină Albă:</strong> Dulciuri, patiserie, pâine albă.</li>
+                                <li><span>🍟</span><strong>Prăjeli și Grăsimi Nocive:</strong> Uleiuri vegetale procesate, margarină.</li>
+                                <li><span>🌭</span><strong>Alimente Procesate:</strong> Mezeluri, mâncare fast-food, aditivi.</li>
+                                <li><span>🍷</span><strong>Alcool:</strong> Toxină directă pentru ficat.</li>
+                                <li><span>🥛</span><strong>Lactate și Gluten:</strong> De testat eliminarea lor, pot fi pro-inflamatorii.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><span>🌿</span>Pilonul 2: Terapii Alternative & Stil de Viață</h2>
+                    <div class="grid-container">
+                        <div class="card">
+                            <h3>Aplicații Locale</h3>
+                            <ul>
+                                <li><strong>Ulei de Ricin:</strong> Compresă caldă pe zonă, 30-60 min, de 4-5 ori/săptămână. Stimulează circulația.</li>
+                                <li><strong>Uleiuri Esențiale:</strong> Masaj ușor cu amestec de Tămâie, Tea Tree și Grepfrut în ulei purtător.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>Suport din Plante</h3>
+                             <ul>
+                                <li><strong>Armurariu:</strong> Protector și regenerator hepatic.</li>
+                                <li><strong>Păpădie:</strong> Stimulează bila și detoxifierea.</li>
+                                <li><strong>Turmeric (Curcumă):</strong> Puternic anti-inflamator natural.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>Terapii Fizice</h3>
+                            <ul>
+                                <li><strong>Drenaj Limfatic:</strong> Terapie CHEIE. Căutați un specialist pentru a debloca limfa stagnantă.</li>
+                                <li><strong>Acupunctură:</strong> Echilibrează energia meridianelor metabolice.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>Stil de Viață</h3>
+                            <ul>
+                                <li><strong>Mișcare Zilnică:</strong> Mers pe jos, yoga, înot pentru a stimula circulația și transpirația.</li>
+                                <li><strong>Managementul Stresului:</strong> Meditație, respirație profundă pentru a reduce cortizolul.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><span>🗓️</span>Rutină Zilnică și Monitorizare</h2>
+                     <div class="grid-container">
+                        <div class="card">
+                            <h3>Exemplu de Rutină</h3>
+                            <p><strong>Dimineața:</strong> Apă cu lămâie, smoothie verde, masaj. <br><strong>Prânz:</strong> Salată mare și colorată. <br><strong>Seara:</strong> Proteină slabă cu legume. <br><strong>Ritual:</strong> Compresă cu ulei de ricin, ceai, relaxare.</p>
+                        </div>
+                        <div class="card">
+                             <h3>Monitorizare</h3>
+                            <p><strong>Răbdare:</strong> Rezultatele necesită timp (luni de zile). <br><strong>Consecvență:</strong> Cheia succesului. <br><strong>Monitorizare Foto:</strong> Faceți o poză lunar pentru a urmări progresul obiectiv.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <div id="avertisment" class="tab-content">
+                <div class="warning-section">
+                    <h2><span>⚠️</span> ATENȚIE: Informație Crucială de Siguranță</h2>
+                    <ul>
+                        <li><strong>Consultați un medic!</strong> Acest plan este un suport complementar, NU un înlocuitor pentru diagnosticul și tratamentul medical avizat.</li>
+                        <li><strong>Confirmarea este esențială:</strong> Doar un medic (dermatolog, chirurg) poate confirma 100% că formațiunea este un lipom benign și nu o altă afecțiune care necesită tratament de urgență.</li>
+                        <li><strong>Discutați deschis cu medicul:</strong> Informați medicul despre intenția de a urma acest plan pentru a vă asigura că nu interferează cu alte condiții de sănătate sau tratamente pe care le urmați. Siguranța dumneavoastră este prioritară.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(item => item.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    const targetContent = document.getElementById(this.dataset.tab);
+                    this.classList.add('active');
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+  </body>
 </html>

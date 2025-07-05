@@ -22,7 +22,7 @@
             box-sizing: border-box;
             background-color: #f8f9fa;
         }
-       .infographic-container {
+      .infographic-container {
             max-width: 900px;
             width: 100%;
             background: #ffffff;
@@ -31,7 +31,7 @@
             overflow: hidden;
             border: 1px solid #e0e0e0;
         }
-       .infographic-header {
+      .infographic-header {
             background-color: #0A2463; /* Culoare primara din Fisierul 1 */
             color: white;
             padding: 30px 20px;
@@ -41,37 +41,37 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
             position: relative;
         }
-       .infographic-header:before,.infographic-header:after {
+      .infographic-header:before,.infographic-header:after {
             content: '';
             position: absolute;
             width: 0;
             height: 0;
             border-style: solid;
         }
-       .infographic-header:before {
+      .infographic-header:before {
             border-width: 0 0 20px 20px;
             border-color: transparent transparent #0A2463 transparent;
             bottom: 0;
             left: 0;
         }
-       .infographic-header:after {
+      .infographic-header:after {
             border-width: 20px 20px 0 0;
             border-color: #0A2463 transparent transparent transparent;
             top: 0;
             right: 0;
         }
 
-       .section {
+      .section {
             padding: 30px 40px;
             border-bottom: 1px solid #f0f0f0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-       .section:last-child {
+      .section:last-child {
             border-bottom: none;
         }
-       .section-title {
+      .section-title {
             font-size: 1.8em;
             color: #0A2463; /* Culoare primara din Fisierul 1 */
             margin-bottom: 20px;
@@ -80,7 +80,7 @@
             padding-bottom: 5px;
             align-self: stretch;
         }
-       .section-content {
+      .section-content {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
@@ -91,7 +91,7 @@
           STANDARDIZARE: Stilul '.info-card' din Fisierul 1 este folosit ca standard
           pentru toate cardurile, inlocuind clasa '.card' din Fisierul 2.
         */
-       .info-card {
+      .info-card {
             flex: 1;
             min-width: 280px;
             background-color: #ffffff;
@@ -100,55 +100,55 @@
             padding: 20px;
             transition: transform 0.2s ease;
         }
-       .info-card:hover {
+      .info-card:hover {
             transform: translateY(-5px);
         }
-       .info-card h3 {
+      .info-card h3 {
             font-size: 1.3em;
             color: #0A2463;
             margin-top: 0;
             margin-bottom: 15px;
             font-weight: 600;
         }
-       .info-card ul {
+      .info-card ul {
             list-style-type: disc;
             padding-left: 20px;
             font-size: 0.95em;
             color: #475569;
         }
-       .info-card li {
+      .info-card li {
             margin-bottom: 5px;
         }
-       .info-card p {
+      .info-card p {
             font-size: 0.95em;
             margin-bottom: 10px;
         }
-       .info-card.border-blue { border-left: 4px solid #3E92CC; }
-       .info-card.border-green { border-left: 4px solid #06D6A0; }
-       .info-card.border-crimson { border-left: 4px solid #D8315B; }
-       .info-card.border-yellow { border-left: 4px solid #F4C150; }
+      .info-card.border-blue { border-left: 4px solid #3E92CC; }
+      .info-card.border-green { border-left: 4px solid #06D6A0; }
+      .info-card.border-crimson { border-left: 4px solid #D8315B; }
+      .info-card.border-yellow { border-left: 4px solid #F4C150; }
 
         /* Stil pentru sectiunea de nutritie din Fisierul 2, adaptat */
-       .nutrition-columns {
+      .nutrition-columns {
             display: flex;
             gap: 30px;
             width: 100%;
         }
-       .column { flex: 1; }
-       .column h3 {
+      .column { flex: 1; }
+      .column h3 {
             font-size: 1.3em;
             padding-bottom: 10px;
             border-bottom: 2px solid;
             margin-bottom: 15px;
             font-weight: 600;
         }
-       .column-start h3 { color: #06D6A0; border-color: #06D6A0; } /* Adaptat la paleta Fisierului 1 */
-       .column-stop h3 { color: #D8315B; border-color: #D8315B; } /* Adaptat la paleta Fisierului 1 */
-       .column ul { list-style-type: none; padding: 0; }
-       .column li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95em; color: #475569;}
-       .column li span { font-size: 1.5em; margin-right: 15px; width: 30px; text-align: center; }
+      .column-start h3 { color: #06D6A0; border-color: #06D6A0; } /* Adaptat la paleta Fisierului 1 */
+      .column-stop h3 { color: #D8315B; border-color: #D8315B; } /* Adaptat la paleta Fisierului 1 */
+      .column ul { list-style-type: none; padding: 0; }
+      .column li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95em; color: #475569;}
+      .column li span { font-size: 1.5em; margin-right: 15px; width: 30px; text-align: center; }
 
-       .disclaimer {
+      .disclaimer {
             font-size: 0.85em;
             color: #D8315B;
             text-align: center;
@@ -158,7 +158,7 @@
             border-radius: 10px;
             background-color: #ffebe6;
         }
-       .footer-copyright {
+      .footer-copyright {
             text-align: center;
             padding: 20px 0;
             font-size: 0.85em;
@@ -168,12 +168,12 @@
         }
 
         /* --- STILURI PENTRU TAB-URI (MIGRATE DIN FISIERUL 2 SI ADAPTATE) --- */
-       .tabs {
+      .tabs {
             display: flex;
             background-color: #f0f2f5; /* Un gri neutru, in armonie cu paleta */
             border-bottom: 1px solid #e0e0e0;
         }
-       .tab-link {
+      .tab-link {
             padding: 15px 20px;
             cursor: pointer;
             border: none;
@@ -186,27 +186,27 @@
             text-align: center;
             border-bottom: 3px solid transparent; /* Tranzitie lina */
         }
-       .tab-link:hover {
+      .tab-link:hover {
             background-color: #e4e8ec;
         }
-       .tab-link.active {
+      .tab-link.active {
             color: #0A2463; /* Culoare primara din Fisierul 1 */
             border-bottom: 3px solid #3E92CC; /* Culoare de accent din Fisierul 1 */
             background-color: #fff;
         }
-       .tab-link.warning.active {
+      .tab-link.warning.active {
             color: #D8315B; /* Culoare de avertizare din Fisierul 1 */
             border-bottom: 3px solid #D8315B;
         }
 
-       .tab-content-container {
+      .tab-content-container {
             padding: 0; /* Padding-ul este gestionat de clasa.section */
         }
-       .tab-content {
+      .tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-       .tab-content.active {
+      .tab-content.active {
             display: block;
         }
         @keyframes fadeIn {
@@ -216,17 +216,17 @@
 
         /* --- STILURI RESPONSIVE (COMBINATE) --- */
         @media (max-width: 768px) {
-           .section { padding: 20px; }
-           .section-content,.nutrition-columns {
+          .section { padding: 20px; }
+          .section-content,.nutrition-columns {
                 flex-direction: column;
             }
-           .info-card { min-width: unset; }
-           .infographic-header { font-size: 1.8em; }
-           .section-title { font-size: 1.5em; }
-           .tabs { flex-direction: column; }
-           .tab-link { border-bottom: 1px solid #ddd; }
-           .tab-link.active { border-bottom: 3px solid #3E92CC; }
-           .tab-link.warning.active { border-bottom: 3px solid #D8315B; }
+          .info-card { min-width: unset; }
+          .infographic-header { font-size: 1.8em; }
+          .section-title { font-size: 1.5em; }
+          .tabs { flex-direction: column; }
+          .tab-link { border-bottom: 1px solid #ddd; }
+          .tab-link.active { border-bottom: 3px solid #3E92CC; }
+          .tab-link.warning.active { border-bottom: 3px solid #D8315B; }
         }
     </style>
 </head>
